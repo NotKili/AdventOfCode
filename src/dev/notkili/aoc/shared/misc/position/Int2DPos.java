@@ -84,6 +84,14 @@ public class Int2DPos {
         return Math.sqrt(Math.pow(x - this.x, 2) + Math.pow(y - this.y, 2));
     }
 
+    public double manhattan(Int2DPos pos) {
+        return Math.abs(pos.x - x) + Math.abs(pos.y - y);
+    }
+
+    public double manhattan(int x, int y) {
+        return Math.abs(x - this.x) + Math.abs(y - this.y);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
