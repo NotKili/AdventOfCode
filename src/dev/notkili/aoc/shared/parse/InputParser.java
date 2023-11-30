@@ -48,6 +48,8 @@ public class InputParser {
             reader.close();
             connection.disconnect();
 
+            content.deleteCharAt(content.length() - 1);
+
             var input = new StringInput(content.toString());
             writeToFile(input.asString());
             return Optional.of(input);
