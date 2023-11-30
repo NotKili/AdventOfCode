@@ -1,4 +1,4 @@
-package dev.notkili.aoc.shared.input;
+package dev.notkili.aoc.shared.parse;
 
 import java.io.BufferedReader;
 import java.io.File;
