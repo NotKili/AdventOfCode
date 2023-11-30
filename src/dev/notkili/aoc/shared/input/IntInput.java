@@ -1,6 +1,9 @@
 package dev.notkili.aoc.shared.input;
 
 import java.util.Objects;
+import java.util.function.BiFunction;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class IntInput implements Input<IntInput> {
     private final int value;
@@ -21,6 +24,10 @@ public class IntInput implements Input<IntInput> {
         this.value = (int) value;
     }
 
+    public IntInput(IntInput other) {
+        this.value = other.value;
+    }
+
     public int asInt() {
         return value;
     }
@@ -31,6 +38,50 @@ public class IntInput implements Input<IntInput> {
 
     public double asDouble() {
         return value;
+    }
+
+    public IntInput add(IntInput other) {
+        return new IntInput(value + other.value);
+    }
+
+    public IntInput add(int x) {
+        return new IntInput(value + x);
+    }
+
+    public IntInput subtract(IntInput other) {
+        return new IntInput(value - other.value);
+    }
+
+    public IntInput subtract(int x) {
+        return new IntInput(value - x);
+    }
+
+    public IntInput multiply(IntInput other) {
+        return new IntInput(value * other.value);
+    }
+
+    public IntInput multiply(int x) {
+        return new IntInput(value * x);
+    }
+
+    public IntInput divide(IntInput other) {
+        return new IntInput(value / other.value);
+    }
+
+    public IntInput divide(int x) {
+        return new IntInput(value / x);
+    }
+
+    public IntInput aggregateUntil(BiFunction<IntInput, IntInput, IntInput> aggregator, Function<IntInput, IntInput> translator, Predicate<IntInput> until) {
+        IntInput toReturn = new IntInput(0);
+        IntInput current = this;
+
+        while (!until.test(current)) {
+            current = translator.apply(current);
+            toReturn = aggregator.apply(toReturn, current);
+        }
+
+        return toReturn;
     }
 
     @Override
