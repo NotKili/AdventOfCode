@@ -143,6 +143,54 @@ public class IntInput implements Input<IntInput> {
         return new IntInput(-value);
     }
 
+    public IntInput max(IntInput other) {
+        return new IntInput(Math.max(value, other.value));
+    }
+
+    public IntInput max(IntInput... others) {
+        int max = value;
+        for (IntInput other : others) {
+            max = Math.max(max, other.value);
+        }
+        return new IntInput(max);
+    }
+
+    public IntInput max(int x) {
+        return new IntInput(Math.max(value, x));
+    }
+
+    public IntInput max(int... x) {
+        int max = value;
+        for (int i : x) {
+            max = Math.max(max, i);
+        }
+        return new IntInput(max);
+    }
+
+    public IntInput min(IntInput other) {
+        return new IntInput(Math.min(value, other.value));
+    }
+
+    public IntInput min(IntInput... others) {
+        int min = value;
+        for (IntInput other : others) {
+            min = Math.min(min, other.value);
+        }
+        return new IntInput(min);
+    }
+
+    public IntInput min(int x) {
+        return new IntInput(Math.min(value, x));
+    }
+
+    public IntInput min(int... x) {
+        int min = value;
+        for (int i : x) {
+            min = Math.min(min, i);
+        }
+        return new IntInput(min);
+    }
+
     public IntInput aggregateUntil(BiFunction<IntInput, IntInput, IntInput> aggregator, Function<IntInput, IntInput> translator, Predicate<IntInput> until) {
         IntInput toReturn = new IntInput(0);
         IntInput current = this;

@@ -102,6 +102,54 @@ public class LongInput implements Input<LongInput> {
         return new LongInput(-value);
     }
 
+    public LongInput max(LongInput other) {
+        return new LongInput(Math.max(value, other.value));
+    }
+
+    public LongInput max(LongInput... others) {
+        long max = value;
+        for (LongInput other : others) {
+            max = Math.max(max, other.value);
+        }
+        return new LongInput(max);
+    }
+
+    public LongInput max(long x) {
+        return new LongInput(Math.max(value, x));
+    }
+
+    public LongInput max(long... x) {
+        long max = value;
+        for (long i : x) {
+            max = Math.max(max, i);
+        }
+        return new LongInput(max);
+    }
+
+    public LongInput min(LongInput other) {
+        return new LongInput(Math.min(value, other.value));
+    }
+
+    public LongInput min(LongInput... others) {
+        long min = value;
+        for (LongInput other : others) {
+            min = Math.min(min, other.value);
+        }
+        return new LongInput(min);
+    }
+
+    public LongInput min(long x) {
+        return new LongInput(Math.min(value, x));
+    }
+
+    public LongInput min(long... x) {
+        long min = value;
+        for (long i : x) {
+            min = Math.min(min, i);
+        }
+        return new LongInput(min);
+    }
+
     public LongInput aggregateUntil(BiFunction<LongInput, LongInput, LongInput> aggregator, Function<LongInput, LongInput> translator, Predicate<LongInput> until) {
         LongInput toReturn = new LongInput(0L);
         LongInput current = this;
