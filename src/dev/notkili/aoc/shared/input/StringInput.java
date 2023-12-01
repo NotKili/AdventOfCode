@@ -137,11 +137,11 @@ public class StringInput implements Input<StringInput> {
             }
 
         } else {
-            Matcher matcher = java.util.regex.Pattern.compile(Constants.LITERAL_DIGIT_PATTERN.asString() + '|' + Constants.DIGIT_PATTERN.asString()).matcher(input);
+            Matcher matcher = Pattern.of(Constants.LITERAL_DIGIT_PATTERN.asString()).or(Constants.DIGIT_PATTERN.asString()).compile().matcher(input);
 
             int count = 0;
-
-            while (matcher.find()) {
+            int startIndex = 0;
+            while (matcher.find(startIndex)) {
                 if (count == n) {
                     var result = matcher.group();
 
@@ -152,12 +152,12 @@ public class StringInput implements Input<StringInput> {
                     return new IntInput(matcher.group());
                 }
 
+                startIndex = matcher.start() + 1;
                 count++;
             }
         }
 
         throw new NoSuchElementException("String " + input + " does not contain a first " + n + "th digit");
-
     }
 
     public IntInput findLastNthDigit(int n) {
@@ -181,8 +181,8 @@ public class StringInput implements Input<StringInput> {
             Matcher matcher = Pattern.of(Constants.LITERAL_DIGIT_PATTERN.reverse().asString()).or(Constants.DIGIT_PATTERN.asString()).compile().matcher(reverse().asString());
 
             int count = 0;
-
-            while (matcher.find()) {
+            int startIndex = 0;
+            while (matcher.find(startIndex)) {
                 if (count == n) {
                     var result = matcher.group();
 
@@ -193,6 +193,7 @@ public class StringInput implements Input<StringInput> {
                     return new IntInput(matcher.group());
                 }
 
+                startIndex = matcher.start() + 1;
                 count++;
             }
         }
