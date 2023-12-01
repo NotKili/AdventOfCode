@@ -3,8 +3,8 @@ package dev.notkili.aoc.shared.input;
 import dev.notkili.aoc.shared.Pattern;
 import dev.notkili.aoc.shared.Solution;
 import dev.notkili.aoc.shared.misc.Constants;
+import dev.notkili.aoc.shared.misc.collections.Set;
 import dev.notkili.aoc.shared.misc.tuple.*;
-import dev.notkili.aoc.shared.submit.ResultSubmitter;
 
 import java.util.*;
 import java.util.function.Predicate;
@@ -90,7 +90,7 @@ public class StringInput implements Input<StringInput> {
         int count = 0;
 
         for (int i = 0; i < input.length() - s.length(); i++) {
-            if (input.substring(i, i + s.length()).equals(s)) {
+            if (input.startsWith(s, i)) {
                 count++;
             }
         }
@@ -106,6 +106,16 @@ public class StringInput implements Input<StringInput> {
         }
 
         return map;
+    }
+
+    public Set<Character> uniqueChars() {
+        var set = new Set<Character>();
+
+        for (char c : input.toCharArray()) {
+            set.add(c);
+        }
+
+        return set;
     }
 
     public IntInput findFirstNthDigit(int n) {
@@ -189,6 +199,28 @@ public class StringInput implements Input<StringInput> {
 
 
         throw new NoSuchElementException("String " + input + " does not contain a last " + n + "th digit");
+    }
+
+    public ListInput.StringListInput groupLines(int n) {
+        var lines = input.split("\n");
+
+        if (lines.length % n != 0) {
+            throw new IllegalArgumentException("StringInput.groupLines() requires a number of lines that is a multiple of the number of lines in the input");
+        }
+
+        var list = new ArrayList<StringInput>();
+
+        for (int i = 0; i < lines.length; i += n) {
+            var builder = new StringBuilder();
+
+            for (int j = 0; j < n; j++) {
+                builder.append(lines[i + j]);
+            }
+
+            list.add(new StringInput(builder.toString()));
+        }
+
+        return new ListInput.StringListInput(list);
     }
 
     public Tuple<StringInput, StringInput> asTuple(String splitAtRegex) {
