@@ -119,6 +119,30 @@ public class IntInput implements Input<IntInput> {
         return new IntInput(value / x);
     }
 
+    public LongInput pow(IntInput other) {
+        return new LongInput((long) Math.pow(value, other.value));
+    }
+
+    public LongInput pow(int x) {
+        return new LongInput((long) Math.pow(value, x));
+    }
+
+    public IntInput mod(IntInput other) {
+        return new IntInput(value % other.value);
+    }
+
+    public IntInput mod(int x) {
+        return new IntInput(value % x);
+    }
+
+    public IntInput abs() {
+        return new IntInput(Math.abs(value));
+    }
+
+    public IntInput negate() {
+        return new IntInput(-value);
+    }
+
     public IntInput aggregateUntil(BiFunction<IntInput, IntInput, IntInput> aggregator, Function<IntInput, IntInput> translator, Predicate<IntInput> until) {
         IntInput toReturn = new IntInput(0);
         IntInput current = this;
