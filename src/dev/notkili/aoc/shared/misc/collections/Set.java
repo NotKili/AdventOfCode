@@ -16,6 +16,11 @@ public class Set<I> implements Iterable<I> {
         return new Set<>(java.util.List.of(element));
     }
 
+    @SafeVarargs
+    public static <I> Set<I> of(I... elements) {
+        return new Set<>(java.util.List.of(elements));
+    }
+
     public static <I> Set<I> of(Collection<I> initialElements) {
         return new Set<>(initialElements);
     }

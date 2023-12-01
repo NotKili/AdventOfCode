@@ -1,9 +1,9 @@
 package dev.notkili.aoc.shared.misc.position;
 
 import dev.notkili.aoc.shared.input.IntInput;
+import dev.notkili.aoc.shared.misc.collections.Set;
 import dev.notkili.aoc.shared.misc.tuple.Tuple;
 
-import java.util.List;
 import java.util.Objects;
 
 public class Int2DPos {
@@ -54,9 +54,89 @@ public class Int2DPos {
         return new Int2DPos(this.x - x, this.y - y);
     }
 
-    public List<Int2DPos> getNeighbours(boolean includeDiagonals) {
+    public Int2DPos north() {
+        return new Int2DPos(x, y + 1);
+    }
+
+    public Int2DPos north(int n) {
+        return new Int2DPos(x, y + n);
+    }
+
+    public Int2DPos northEast() {
+        return new Int2DPos(x + 1, y + 1);
+    }
+
+    public Int2DPos northEast(int n) {
+        return new Int2DPos(x + n, y + n);
+    }
+
+    public Int2DPos northEast(int east, int north) {
+        return new Int2DPos(this.x + east, this.y + north);
+    }
+
+    public Int2DPos east() {
+        return new Int2DPos(x + 1, y);
+    }
+
+    public Int2DPos east(int n) {
+        return new Int2DPos(x + n, y);
+    }
+
+    public Int2DPos southEast() {
+        return new Int2DPos(x + 1, y - 1);
+    }
+
+    public Int2DPos southEast(int n) {
+        return new Int2DPos(x + n, y - n);
+    }
+
+    public Int2DPos southEast(int east, int south) {
+        return new Int2DPos(this.x + east, this.y - south);
+    }
+
+    public Int2DPos south() {
+        return new Int2DPos(x, y - 1);
+    }
+
+    public Int2DPos south(int n) {
+        return new Int2DPos(x, y - n);
+    }
+
+    public Int2DPos southWest() {
+        return new Int2DPos(x - 1, y - 1);
+    }
+
+    public Int2DPos southWest(int n) {
+        return new Int2DPos(x - n, y - n);
+    }
+
+    public Int2DPos southWest(int west, int south) {
+        return new Int2DPos(this.x - west, this.y - south);
+    }
+
+    public Int2DPos west() {
+        return new Int2DPos(x - 1, y);
+    }
+
+    public Int2DPos west(int n) {
+        return new Int2DPos(x - n, y);
+    }
+
+    public Int2DPos northWest() {
+        return new Int2DPos(x - 1, y + 1);
+    }
+
+    public Int2DPos northWest(int n) {
+        return new Int2DPos(x - n, y + n);
+    }
+
+    public Int2DPos northWest(int west, int north) {
+        return new Int2DPos(this.x - west, this.y + north);
+    }
+
+    public Set<Int2DPos> getNeighbours(boolean includeDiagonals) {
         if(includeDiagonals) {
-            return List.of(
+            return Set.of(
                     new Int2DPos(x + 1, y),
                     new Int2DPos(x - 1, y),
                     new Int2DPos(x, y + 1),
@@ -68,7 +148,7 @@ public class Int2DPos {
             );
         }
 
-        return List.of(
+        return Set.of(
                 new Int2DPos(x + 1, y),
                 new Int2DPos(x - 1, y),
                 new Int2DPos(x, y + 1),
@@ -90,6 +170,14 @@ public class Int2DPos {
 
     public double manhattan(int x, int y) {
         return Math.abs(x - this.x) + Math.abs(y - this.y);
+    }
+
+    public boolean isNegative() {
+        return x < 0 || y < 0;
+    }
+
+    public boolean isOutside(int n) {
+        return x > n || y > n;
     }
 
     @Override
