@@ -1,5 +1,6 @@
 package dev.notkili.aoc.shared.input;
 
+import java.util.Locale;
 import java.util.Objects;
 import java.util.function.BiFunction;
 import java.util.function.Function;
@@ -7,6 +8,38 @@ import java.util.function.Predicate;
 
 public class IntInput implements Input<IntInput> {
     private final int value;
+
+    public static IntInput parseRadix(String value, int radix) {
+        return new IntInput(Integer.parseInt(value, radix));
+    }
+
+    public static IntInput parseHex(String value) {
+        return new IntInput(Integer.parseInt(value, 16));
+    }
+
+    public static IntInput parseOctal(String value) {
+        return new IntInput(Integer.parseInt(value, 8));
+    }
+
+    public static IntInput parseBinary(String value) {
+        return new IntInput(Integer.parseInt(value, 2));
+    }
+
+    public static IntInput parseLiteral(String value) {
+        return switch (value.toLowerCase(Locale.ROOT)) {
+            case "zero" -> new IntInput(0);
+            case "one" -> new IntInput(1);
+            case "two" -> new IntInput(2);
+            case "three" -> new IntInput(3);
+            case "four" -> new IntInput(4);
+            case "five" -> new IntInput(5);
+            case "six" -> new IntInput(6);
+            case "seven" -> new IntInput(7);
+            case "eight" -> new IntInput(8);
+            case "nine" -> new IntInput(9);
+            default -> throw new IllegalArgumentException("Unknown literal: " + value);
+        };
+    }
 
     public IntInput(String value) {
         this.value = Integer.parseInt(value);
@@ -38,6 +71,18 @@ public class IntInput implements Input<IntInput> {
 
     public double asDouble() {
         return value;
+    }
+
+    public StringInput asStringInput() {
+        return new StringInput(value + "");
+    }
+
+    public LongInput asLongInput() {
+        return new LongInput(value);
+    }
+
+    public DoubleInput asDoubleInput() {
+        return new DoubleInput(value);
     }
 
     public IntInput add(IntInput other) {
@@ -110,17 +155,5 @@ public class IntInput implements Input<IntInput> {
     @Override
     public void print() {
         System.out.print(value);
-    }
-
-    public StringInput asStringInput() {
-        return new StringInput(value + "");
-    }
-
-    public LongInput asLongInput() {
-        return new LongInput(value);
-    }
-
-    public DoubleInput asDoubleInput() {
-        return new DoubleInput(value);
     }
 }
