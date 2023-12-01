@@ -1,5 +1,7 @@
 package dev.notkili.aoc.shared.input;
 
+import dev.notkili.aoc.shared.Solution;
+
 import java.util.Locale;
 import java.util.Objects;
 import java.util.function.BiFunction;
@@ -155,5 +157,10 @@ public class IntInput implements Input<IntInput> {
     @Override
     public void print() {
         System.out.print(value);
+    }
+
+    @Override
+    public Solution asSolution() {
+        return new Solution(value + "");
     }
 }

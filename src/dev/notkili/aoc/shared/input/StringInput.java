@@ -1,6 +1,7 @@
 package dev.notkili.aoc.shared.input;
 
 import dev.notkili.aoc.shared.Pattern;
+import dev.notkili.aoc.shared.Solution;
 import dev.notkili.aoc.shared.misc.Constants;
 import dev.notkili.aoc.shared.misc.tuple.*;
 import dev.notkili.aoc.shared.submit.ResultSubmitter;
@@ -240,10 +241,6 @@ public class StringInput implements Input<StringInput> {
         return new Sextuple<>(new StringInput(split[0]), new StringInput(split[1]), new StringInput(split[2]), new StringInput(split[3]), new StringInput(split[4]), new StringInput(split[5]));
     }
 
-    public void trySubmit(int year, int day, int part) {
-        new ResultSubmitter(this.input, year, day, part).submit();
-    }
-
     @Override
     public String toString() {
         return this.input;
@@ -257,5 +254,10 @@ public class StringInput implements Input<StringInput> {
     @Override
     public void print() {
         System.out.print(input);
+    }
+
+    @Override
+    public Solution asSolution() {
+        return new Solution(input);
     }
 }

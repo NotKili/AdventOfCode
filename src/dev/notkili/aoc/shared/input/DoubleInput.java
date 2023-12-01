@@ -1,5 +1,7 @@
 package dev.notkili.aoc.shared.input;
 
+import dev.notkili.aoc.shared.Solution;
+
 import java.util.Objects;
 
 public class DoubleInput implements Input<DoubleInput> {
@@ -71,5 +73,10 @@ public class DoubleInput implements Input<DoubleInput> {
 
     public LongInput asLongInput() {
         return new LongInput((long) value);
+    }
+
+    @Override
+    public Solution asSolution() {
+        return new Solution(value + "");
     }
 }
