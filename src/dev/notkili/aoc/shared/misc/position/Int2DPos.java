@@ -192,4 +192,12 @@ public class Int2DPos {
     public int hashCode() {
         return Objects.hash(x, y);
     }
+
+    @Override
+    public String toString() {
+        return "Int2DPos{" +
+                "x=" + x +
+                ", y=" + y +
+                '}';
+    }
 }

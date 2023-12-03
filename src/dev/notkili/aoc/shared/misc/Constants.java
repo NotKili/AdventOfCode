@@ -4,7 +4,6 @@ import dev.notkili.aoc.shared.input.StringInput;
 import dev.notkili.aoc.shared.misc.collections.Set;
 
 import java.util.List;
-import java.util.regex.Pattern;
 
 /**
  * Unmodifiable sets & lists of constants

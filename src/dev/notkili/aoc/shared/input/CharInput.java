@@ -1,8 +1,10 @@
 package dev.notkili.aoc.shared.input;
 
+import dev.notkili.aoc.shared.Solution;
+
 import java.util.Objects;
 
-public class CharInput implements Comparable<CharInput> {
+public class CharInput implements Input<CharInput> {
     private final char c;
 
     public CharInput(char c) {
@@ -46,5 +48,10 @@ public class CharInput implements Comparable<CharInput> {
 
     public void print() {
         System.out.print(c);
+    }
+
+    @Override
+    public Solution asSolution() {
+        return new Solution(c + "");
     }
 }

@@ -38,6 +38,10 @@ public class StringInput implements Input<StringInput> {
         return new DoubleInput(input);
     }
 
+    public IntInput length() {
+        return new IntInput(input.length());
+    }
+
     public StringInput replace(String old, String replacement) {
         return new StringInput(input.replace(old, replacement));
     }
@@ -116,6 +120,48 @@ public class StringInput implements Input<StringInput> {
         }
 
         return set;
+    }
+
+    public StringInput findFirstNthMatching(Pattern regex, int n, boolean overlap) {
+        int count = 0;
+
+        if (overlap) {
+            var startIndex = 0;
+            Matcher matcher = regex.compile().matcher(input);
+
+            while (matcher.find(startIndex)) {
+                if (count == n) {
+                    return new StringInput(matcher.group());
+                }
+
+                startIndex = matcher.start() + 1;
+                count++;
+            }
+        } else {
+            Matcher matcher = regex.compile().matcher(input);
+
+            while (matcher.find()) {
+                if (count == n) {
+                    return new StringInput(matcher.group());
+                }
+
+                count++;
+            }
+        }
+
+        throw new NoSuchElementException("String " + input + " does not contain a first " + n + "th matching " + regex.pattern());
+    }
+
+    public StringInput findLastNthMatching(Pattern regex, int n, boolean overlap) {
+        return reverse().findFirstNthMatching(regex.reverse(), n, overlap).reverse();
+    }
+
+    public IntInput findFirstNthNumber(int n) {
+        return findFirstNthMatching(Pattern.of(Constants.DIGITS_PATTERN), n, false).asInt();
+    }
+
+    public IntInput findLastNthNumber(int n) {
+        return findLastNthMatching(Pattern.of(Constants.DIGITS_PATTERN), n, false).asInt();
     }
 
     public IntInput findFirstNthDigit(int n) {
