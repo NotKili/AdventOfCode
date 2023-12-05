@@ -138,11 +138,6 @@ public class Day5 {
                                 getInRange(light1, temperature).forEach(temperature1 -> {
                                     getInRange(temperature1, humidity).forEach(humidity1 -> {
                                         getInRange(humidity1, location).forEach(location1 -> {
-                                            if (location1.lower == 0) {
-                                                System.out.println(location1);
-                                                return;
-                                            }
-
                                             if (location1.lower < min.get()) {
                                                 min.set(location1.lower);
                                             }
