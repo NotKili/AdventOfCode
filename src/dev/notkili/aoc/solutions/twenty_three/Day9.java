@@ -44,8 +44,8 @@ public class Day9 {
 
     // 995526126
     public static IntInput extrapolate(ListInput.IntListInput nums) {
-        if (nums.distinctCount().asInt() == 1 && nums.get(0).asInt() == 0) {
-            return new IntInput(0);
+        if (nums.distinctCount().asInt() == 1) {
+            return nums.get(0);
         }
 
         ListInput.IntListInput differences = new ListInput.IntListInput();
