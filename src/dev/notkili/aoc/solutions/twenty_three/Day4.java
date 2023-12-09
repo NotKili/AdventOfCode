@@ -2,7 +2,7 @@ package dev.notkili.aoc.solutions.twenty_three;
 
 import dev.notkili.aoc.shared.input.IntInput;
 import dev.notkili.aoc.shared.misc.Count;
-import dev.notkili.aoc.shared.misc.collections.Set;
+import dev.notkili.aoc.shared.misc.collections.set.Set;
 import dev.notkili.aoc.shared.parse.InputParser;
 
 import java.util.HashMap;

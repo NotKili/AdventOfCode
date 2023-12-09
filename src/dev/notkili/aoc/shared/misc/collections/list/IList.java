@@ -1,7 +1,7 @@
 package dev.notkili.aoc.shared.misc.collections.list;
 
 import dev.notkili.aoc.shared.input.LongInput;
-import dev.notkili.aoc.shared.misc.collections.Set;
+import dev.notkili.aoc.shared.misc.collections.set.ISet;
 
 import java.util.*;
 import java.util.function.Function;
@@ -89,7 +89,7 @@ public interface IList<T, L extends IList<T, L>> extends Iterable<T> {
 
     ArrayList<T> arrayList();
 
-    Set<T> set();
+    ISet<T, ?> set();
 
     void print();
 }

@@ -1,7 +1,7 @@
 package dev.notkili.aoc.shared.misc.position;
 
 import dev.notkili.aoc.shared.input.IntInput;
-import dev.notkili.aoc.shared.misc.collections.Set;
+import dev.notkili.aoc.shared.misc.collections.set.Set;
 import dev.notkili.aoc.shared.misc.tuple.Tuple;
 
 import java.util.Objects;

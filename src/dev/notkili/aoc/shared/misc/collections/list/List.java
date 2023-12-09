@@ -275,8 +275,8 @@ public class List<T> implements IList<T, List<T>> {
     }
 
     @Override
-    public dev.notkili.aoc.shared.misc.collections.Set<T> set() {
-        return new dev.notkili.aoc.shared.misc.collections.Set<>(this.backingList);
+    public dev.notkili.aoc.shared.misc.collections.set.Set<T> set() {
+        return new dev.notkili.aoc.shared.misc.collections.set.Set<>(this.backingList);
     }
 
     @Override

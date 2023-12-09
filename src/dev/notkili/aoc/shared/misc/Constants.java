@@ -1,7 +1,7 @@
 package dev.notkili.aoc.shared.misc;
 
 import dev.notkili.aoc.shared.input.StringInput;
-import dev.notkili.aoc.shared.misc.collections.Set;
+import dev.notkili.aoc.shared.misc.collections.set.Set;
 
 import java.util.List;
 

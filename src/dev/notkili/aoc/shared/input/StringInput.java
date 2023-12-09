@@ -4,7 +4,7 @@ import dev.notkili.aoc.shared.Pattern;
 import dev.notkili.aoc.shared.Solution;
 import dev.notkili.aoc.shared.misc.Constants;
 import dev.notkili.aoc.shared.misc.collections.Counter;
-import dev.notkili.aoc.shared.misc.collections.Set;
+import dev.notkili.aoc.shared.misc.collections.set.Set;
 import dev.notkili.aoc.shared.misc.tuple.*;
 
 import java.util.*;

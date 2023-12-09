@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
+/** @noinspection unchecked*/
 public interface ISet<T, S extends ISet<T, S>> extends Iterable<T> {
     S copy();
 

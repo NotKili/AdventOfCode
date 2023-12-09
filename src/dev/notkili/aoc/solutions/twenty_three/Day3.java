@@ -1,7 +1,7 @@
 package dev.notkili.aoc.solutions.twenty_three;
 
 import dev.notkili.aoc.shared.input.IntInput;
-import dev.notkili.aoc.shared.misc.collections.Set;
+import dev.notkili.aoc.shared.misc.collections.set.Set;
 import dev.notkili.aoc.shared.misc.position.Int2DPos;
 import dev.notkili.aoc.shared.parse.InputParser;
 
@@ -211,7 +211,7 @@ public class Day3 {
                         }
 
                         if (adjacentNums.size() == 2) {
-                            var l = adjacentNums.asList();
+                            var l = adjacentNums.list();
                             var num = l.get(0) * l.get(1);
 
                             sum = sum.add(num);

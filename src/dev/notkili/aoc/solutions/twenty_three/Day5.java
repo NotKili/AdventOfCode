@@ -2,7 +2,7 @@ package dev.notkili.aoc.solutions.twenty_three;
 
 import dev.notkili.aoc.shared.input.LongInput;
 import dev.notkili.aoc.shared.misc.collections.list.List;
-import dev.notkili.aoc.shared.misc.collections.Set;
+import dev.notkili.aoc.shared.misc.collections.set.Set;
 import dev.notkili.aoc.shared.misc.tuple.Triple;
 import dev.notkili.aoc.shared.misc.tuple.Tuple;
 import dev.notkili.aoc.shared.parse.InputParser;
@@ -213,7 +213,7 @@ public class Day5 {
             numOpt.ifPresent(set::add);
         }));
 
-        if (set.isEmpty()) {
+        if (set.empty()) {
             return old;
         }
 
