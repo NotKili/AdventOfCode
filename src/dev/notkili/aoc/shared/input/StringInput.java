@@ -3,6 +3,7 @@ package dev.notkili.aoc.shared.input;
 import dev.notkili.aoc.shared.Pattern;
 import dev.notkili.aoc.shared.Solution;
 import dev.notkili.aoc.shared.misc.Constants;
+import dev.notkili.aoc.shared.misc.collections.Counter;
 import dev.notkili.aoc.shared.misc.collections.Set;
 import dev.notkili.aoc.shared.misc.tuple.*;
 
@@ -102,14 +103,13 @@ public class StringInput implements Input<StringInput> {
         return new IntInput(count);
     }
 
-    public Map<Character, IntInput> countChars() {
-        HashMap<Character, IntInput> map = new HashMap<>();
+    public Counter<Character> countChars() {
+        var c =  new Counter<Character>();
 
-        for (char c : input.toCharArray()) {
-            map.put(c, map.getOrDefault(c, new IntInput(0)).add(1));
-        }
+        for (var character : input.toCharArray())
+            c.add(character);
 
-        return map;
+        return c;
     }
 
     public Set<Character> uniqueChars() {
