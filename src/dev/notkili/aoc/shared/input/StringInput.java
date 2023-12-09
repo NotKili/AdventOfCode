@@ -8,6 +8,7 @@ import dev.notkili.aoc.shared.misc.collections.Set;
 import dev.notkili.aoc.shared.misc.tuple.*;
 
 import java.util.*;
+import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.regex.Matcher;
 import java.util.stream.Collectors;
@@ -69,6 +70,14 @@ public class StringInput implements Input<StringInput> {
 
     public StringInput trim() {
         return new StringInput(input.trim());
+    }
+
+    public StringInput map(Function<StringInput, StringInput> mapper) {
+        return mapper.apply(this);
+    }
+
+    public StringInput mapStr(Function<String, String> mapper) {
+        return new StringInput(mapper.apply(input));
     }
 
     public CharInput charAt(int index) {
