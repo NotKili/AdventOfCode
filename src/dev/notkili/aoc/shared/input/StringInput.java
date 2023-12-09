@@ -43,6 +43,38 @@ public class StringInput implements Input<StringInput> {
         return new IntInput(input.length());
     }
 
+    public boolean isEmpty() {
+        return input.isEmpty();
+    }
+
+    public boolean endsWith(String suffix) {
+        return input.endsWith(suffix);
+    }
+
+    public boolean startsWith(String prefix) {
+        return input.startsWith(prefix);
+    }
+
+    public StringInput substring(int beginIndex) {
+        return new StringInput(input.substring(beginIndex));
+    }
+
+    public StringInput substring(int beginIndex, int endIndex) {
+        return new StringInput(input.substring(beginIndex, endIndex));
+    }
+
+    public StringInput substringTo(int endIndex) {
+        return new StringInput(input.substring(0, endIndex));
+    }
+
+    public StringInput trim() {
+        return new StringInput(input.trim());
+    }
+
+    public CharInput charAt(int index) {
+        return new CharInput(input.charAt(index));
+    }
+
     public StringInput replace(String old, String replacement) {
         return new StringInput(input.replace(old, replacement));
     }
