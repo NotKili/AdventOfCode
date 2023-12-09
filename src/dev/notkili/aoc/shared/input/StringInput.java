@@ -336,6 +336,19 @@ public class StringInput implements Input<StringInput> {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        StringInput that = (StringInput) o;
+        return Objects.equals(input, that.input);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(input);
+    }
+
+    @Override
     public Solution asSolution() {
         return new Solution(input);
     }
