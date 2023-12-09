@@ -1,7 +1,7 @@
 package dev.notkili.aoc.solutions.twenty_three;
 
 import dev.notkili.aoc.shared.input.LongInput;
-import dev.notkili.aoc.shared.misc.collections.List;
+import dev.notkili.aoc.shared.misc.collections.list.List;
 import dev.notkili.aoc.shared.misc.collections.Set;
 import dev.notkili.aoc.shared.misc.tuple.Triple;
 import dev.notkili.aoc.shared.misc.tuple.Tuple;
@@ -162,7 +162,7 @@ public class Day5 {
 
             while (lowerBound < upperBound) {
                 // b > d : (a, b) , (c, d)
-                if (lowerBound > mapper.last().getA().upper) {
+                if (lowerBound > mapper.get(-1).getA().upper) {
                     tmpList.add(new Range(lowerBound, upperBound));
                     break;
                 }

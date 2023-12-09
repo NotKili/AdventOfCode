@@ -1,8 +1,7 @@
 package dev.notkili.aoc.solutions.twenty_three;
 
 import dev.notkili.aoc.shared.input.LongInput;
-import dev.notkili.aoc.shared.input.StringInput;
-import dev.notkili.aoc.shared.misc.collections.List;
+import dev.notkili.aoc.shared.misc.collections.list.List;
 import dev.notkili.aoc.shared.misc.tuple.Tuple;
 import dev.notkili.aoc.shared.parse.InputParser;
 

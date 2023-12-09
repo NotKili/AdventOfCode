@@ -1,6 +1,7 @@
 package dev.notkili.aoc.shared.misc.collections;
 
 import dev.notkili.aoc.shared.misc.Count;
+import dev.notkili.aoc.shared.misc.collections.list.List;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -30,7 +31,7 @@ public class Counter<T> {
     }
 
     public Count getCountFor(T element) {
-        return counters.get(element);
+        return counters.getOrDefault(element, new Count(0));
     }
 
     public Counter<T> add(T element) {
@@ -62,6 +63,16 @@ public class Counter<T> {
 
         return this;
     }
+
+    public int getSize() {
+        return counters.size();
+    }
+
+    public List<T> keys() {
+        return new List<>(counters.keySet());
+    }
+
+
 
     public Counter<T> merge(Counter<T> other) {
         Counter<T> counter = new Counter<>();
