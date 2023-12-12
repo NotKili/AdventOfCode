@@ -1,6 +1,8 @@
 package dev.notkili.aoc.shared.misc.tuple;
 
 import java.util.Objects;
+import java.util.function.BiConsumer;
+import java.util.function.BiFunction;
 import java.util.function.Function;
 
 public class Tuple<A, B> {
@@ -38,6 +40,18 @@ public class Tuple<A, B> {
 
     public <C> Tuple<A, C> mapB(Function<B, C> mapper) {
         return new Tuple<>(a, mapper.apply(b));
+    }
+
+    public <C, D> Tuple<C, D> map(Function<A, C> mapperA, Function<B, D> mapperB) {
+        return new Tuple<>(mapperA.apply(a), mapperB.apply(b));
+    }
+
+    public void then(BiConsumer<A, B> consumer) {
+        consumer.accept(a, b);
+    }
+
+    public <C> C then(BiFunction<A, B, C> function) {
+        return function.apply(a, b);
     }
 
     @Override
