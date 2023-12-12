@@ -280,8 +280,24 @@ public class List<T> implements IList<T, List<T>> {
     }
 
     @Override
+    public List<T> multiply(long times) {
+        List<T> result = new List<>();
+
+        for (long i = 0; i < times; i++) {
+            result.addAll(this);
+        }
+
+        return result;
+    }
+
+    @Override
     public void print() {
         System.out.println("List: " + this.backingList);
+    }
+
+    @Override
+    public String toString() {
+        return "List: " + backingList;
     }
 
     @Override

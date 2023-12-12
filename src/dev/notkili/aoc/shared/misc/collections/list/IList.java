@@ -91,5 +91,7 @@ public interface IList<T, L extends IList<T, L>> extends Iterable<T> {
 
     ISet<T, ?> set();
 
+    L multiply(long times);
+
     void print();
 }
