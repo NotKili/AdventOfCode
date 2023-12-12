@@ -64,6 +64,14 @@ public class StringInput implements Input<StringInput> {
         return new StringInput(input.substring(beginIndex, endIndex));
     }
 
+    public StringInput concat(String str) {
+        return new StringInput(input.concat(str));
+    }
+
+    public StringInput concat(StringInput str) {
+        return new StringInput(input.concat(str.input));
+    }
+
     public StringInput substringTo(int endIndex) {
         return new StringInput(input.substring(0, endIndex));
     }
