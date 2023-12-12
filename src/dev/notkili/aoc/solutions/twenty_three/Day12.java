@@ -99,8 +99,6 @@ public class Day12 {
         }
 
         if (
-                wells[wellIndex] != '.'
-                        &&
                 !contains(wells, wellIndex, lastWellGroupIndex, '.')
                         &&
                 wells[lastWellGroupIndex] != '#'
@@ -110,17 +108,6 @@ public class Day12 {
 
         cache.put(cKey, count);
         return count;
-    }
-
-    private static int findNext(char[] arr, int from, char[] cs) {
-        for (int i = from; i < arr.length; i++) {
-            for (char c : cs) {
-                if (arr[i] == c) {
-                    return i;
-                }
-            }
-        }
-        return -1;
     }
 
     private static boolean contains(char[] arr, int from, int to, char c) {
