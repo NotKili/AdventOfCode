@@ -80,6 +80,14 @@ public class StringInput implements Input<StringInput> {
         return new StringInput(mapper.apply(input));
     }
 
+    public char[] chars() {
+        return input.toCharArray();
+    }
+
+    public Character[] charsInput() {
+        return input.chars().mapToObj(c -> (char) c).toArray(Character[]::new);
+    }
+
     public CharInput charAt(int index) {
         return new CharInput(input.charAt(index));
     }
