@@ -108,6 +108,30 @@ public class StringInput implements Input<StringInput> {
         return new ListInput.StringListInput(Arrays.stream(input.split(regex, limit)).map(StringInput::new).collect(Collectors.toList()));
     }
 
+    public StringInput join(long times) {
+        var builder = new StringBuilder();
+
+        for (int i = 0; i < times; i++) {
+            builder.append(input);
+        }
+
+        return new StringInput(builder.toString());
+    }
+
+    public StringInput join(long times, String delimiter) {
+        var builder = new StringBuilder();
+
+        for (int i = 0; i < times; i++) {
+            builder.append(input);
+
+            if (i != times - 1) {
+                builder.append(delimiter);
+            }
+        }
+
+        return new StringInput(builder.toString());
+    }
+
     public IntInput countChar(char c) {
         int count = 0;
 
