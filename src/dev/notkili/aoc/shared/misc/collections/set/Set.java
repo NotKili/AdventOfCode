@@ -242,4 +242,14 @@ public class Set<T> implements ISet<T, Set<T>> {
     public Iterator<T> iterator() {
         return backingSet.iterator();
     }
+
+    @Override
+    public int hashCode() {
+        return backingSet.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return obj instanceof Set<?> set && backingSet.equals(set.backingSet);
+    }
 }
