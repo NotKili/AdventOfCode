@@ -240,4 +240,12 @@ public class Int2DPos implements Comparable<Int2DPos> {
                 ", y=" + y +
                 '}';
     }
+
+    @Override
+    public int compareTo(Int2DPos o) {
+        if (x == o.x) {
+            return Integer.compare(y, o.y);
+        }
+        return Integer.compare(x, o.x);
+    }
 }
