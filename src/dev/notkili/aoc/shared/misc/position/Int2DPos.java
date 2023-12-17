@@ -84,83 +84,83 @@ public class Int2DPos implements Comparable<Int2DPos> {
     }
 
     public Int2DPos north() {
-        return new Int2DPos(x, y + 1);
+        return add(Direction.NORTH.getDelta());
     }
 
     public Int2DPos north(int n) {
-        return new Int2DPos(x, y + n);
+        return add(Direction.NORTH.getDelta().mul(n));
     }
 
     public Int2DPos northEast() {
-        return new Int2DPos(x + 1, y + 1);
+        return add(Direction.NORTH_EAST.getDelta());
     }
 
     public Int2DPos northEast(int n) {
-        return new Int2DPos(x + n, y + n);
+        return add(Direction.NORTH_EAST.getDelta().mul(n));
     }
 
     public Int2DPos northEast(int east, int north) {
-        return new Int2DPos(this.x + east, this.y + north);
+        return add(Direction.NORTH_EAST.getDelta().mul(east, north));
     }
 
     public Int2DPos east() {
-        return new Int2DPos(x + 1, y);
+        return add(Direction.EAST.getDelta());
     }
 
     public Int2DPos east(int n) {
-        return new Int2DPos(x + n, y);
+        return add(Direction.EAST.getDelta().mul(n));
     }
 
     public Int2DPos southEast() {
-        return new Int2DPos(x + 1, y - 1);
+        return add(Direction.SOUTH_EAST.getDelta());
     }
 
     public Int2DPos southEast(int n) {
-        return new Int2DPos(x + n, y - n);
+        return add(Direction.SOUTH_EAST.getDelta().mul(n));
     }
 
     public Int2DPos southEast(int east, int south) {
-        return new Int2DPos(this.x + east, this.y - south);
+        return add(Direction.SOUTH_EAST.getDelta().mul(east, south));
     }
 
     public Int2DPos south() {
-        return add(Direction.SOUTH.delta);
+        return add(Direction.SOUTH.getDelta());
     }
 
     public Int2DPos south(int n) {
-        return new Int2DPos(x, y - n);
+        return add(Direction.SOUTH.getDelta().mul(n));
     }
 
     public Int2DPos southWest() {
-        return new Int2DPos(x - 1, y - 1);
+        return add(Direction.SOUTH_WEST.getDelta());
     }
 
     public Int2DPos southWest(int n) {
-        return new Int2DPos(x - n, y - n);
+        return add(Direction.SOUTH_WEST.getDelta().mul(n));
     }
 
     public Int2DPos southWest(int west, int south) {
-        return new Int2DPos(this.x - west, this.y - south);
+        return add(Direction.SOUTH_WEST.getDelta().mul(west, south));
     }
 
     public Int2DPos west() {
-        return new Int2DPos(x - 1, y);
+        return add(Direction.WEST.getDelta());
     }
 
     public Int2DPos west(int n) {
-        return new Int2DPos(x - n, y);
+        return add(Direction.WEST.getDelta().mul(n));
     }
 
     public Int2DPos northWest() {
-        return new Int2DPos(x - 1, y + 1);
+        return add(Direction.NORTH_WEST.getDelta());
     }
 
     public Int2DPos northWest(int n) {
-        return new Int2DPos(x - n, y + n);
+        return add(Direction.NORTH_WEST.getDelta().mul(n));
     }
 
     public Int2DPos northWest(int west, int north) {
-        return new Int2DPos(this.x - west, this.y + north);
+        return add(Direction.NORTH_WEST.getDelta().mul(west, north));
     }
 
     public Set<Int2DPos> getNeighbours(Direction... directions) {
