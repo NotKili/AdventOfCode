@@ -48,4 +48,9 @@ public class Quintuple<A, B, C, D, E> {
     public int hashCode() {
         return Objects.hash(a, b, c, d, e);
     }
+
+    @Override
+    public String toString() {
+        return "(" + a + ", " + b + ", " + c + ", " + d + ", " + e + ")";
+    }
 }

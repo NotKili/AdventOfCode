@@ -36,4 +36,9 @@ public class Triple<A, B, C> {
     public int hashCode() {
         return Objects.hash(a, b, c);
     }
+
+    @Override
+    public String toString() {
+        return "(" + a + ", " + b + ", " + c + ")";
+    }
 }

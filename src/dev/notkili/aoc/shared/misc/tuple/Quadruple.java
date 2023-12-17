@@ -42,4 +42,9 @@ public class Quadruple<A, B, C, D> {
     public int hashCode() {
         return Objects.hash(a, b, c, d);
     }
+
+    @Override
+    public String toString() {
+        return "(" + a + ", " + b + ", " + c + ", " + d + ')';
+    }
 }

@@ -54,4 +54,9 @@ public class Sextuple<A, B, C, D, E, F> {
     public int hashCode() {
         return Objects.hash(a, b, c, d, e, f);
     }
+
+    @Override
+    public String toString() {
+        return "(" + a + ", " + b + ", " + c + ", " + d + ", " + e + ", " + f + ")";
+    }
 }
