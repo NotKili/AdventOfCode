@@ -2,6 +2,7 @@ package dev.notkili.aoc.solutions.twenty_three;
 
 import dev.notkili.aoc.shared.input.IntInput;
 import dev.notkili.aoc.shared.misc.collections.set.Set;
+import dev.notkili.aoc.shared.misc.position.Direction;
 import dev.notkili.aoc.shared.misc.position.Int2DPos;
 import dev.notkili.aoc.shared.parse.InputParser;
 
@@ -77,7 +78,7 @@ public class Day3 {
                     visited.add(pos);
 
                     if (Character.isDigit(c)) {
-                        for (Int2DPos neighbour : pos.getNeighbours(true)) {
+                        for (Int2DPos neighbour : pos.getNeighbours(Direction.AllArr)) {
 
                             if (!map.containsKey(neighbour))
                                 continue;
@@ -201,7 +202,7 @@ public class Day3 {
                     if (c.equals('*')) {
                         Set<Integer> adjacentNums = new Set<>();
 
-                        for (Int2DPos neighbour : pos.getNeighbours(true)) {
+                        for (Int2DPos neighbour : pos.getNeighbours(Direction.AllArr)) {
                             if (!map.containsKey(neighbour))
                                 continue;
 
