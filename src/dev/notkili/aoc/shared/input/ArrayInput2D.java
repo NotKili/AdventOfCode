@@ -36,6 +36,10 @@ public class ArrayInput2D<T> {
         return backingArray.length;
     }
 
+    public T[][] getBackingArray() {
+        return backingArray;
+    }
+
     public void print() {
         for (var row : backingArray) {
             for (var col : row) {
