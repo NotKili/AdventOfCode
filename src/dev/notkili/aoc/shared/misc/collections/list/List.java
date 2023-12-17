@@ -17,6 +17,11 @@ public class List<T> implements IList<T, List<T>> {
         return new List<>(java.util.List.of(element));
     }
 
+    @SafeVarargs
+    public static <I> List<I> of(I... elements) {
+        return new List<>(java.util.List.of(elements));
+    }
+
     public static <I> List<I> of(Collection<I> initialElements) {
         return new List<>(initialElements);
     }
@@ -303,5 +308,19 @@ public class List<T> implements IList<T, List<T>> {
     @Override
     public Iterator<T> iterator() {
         return this.backingList.iterator();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(backingList);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof List) {
+            return this.backingList.equals(((List<?>) obj).backingList);
+        }
+
+        return false;
     }
 }
