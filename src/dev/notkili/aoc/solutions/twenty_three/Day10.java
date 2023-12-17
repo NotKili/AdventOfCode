@@ -4,6 +4,7 @@ import dev.notkili.aoc.shared.input.IntInput;
 import dev.notkili.aoc.shared.input.StringInput;
 import dev.notkili.aoc.shared.misc.collections.list.List;
 import dev.notkili.aoc.shared.misc.collections.set.Set;
+import dev.notkili.aoc.shared.misc.position.Direction;
 import dev.notkili.aoc.shared.misc.position.Int2DPos;
 import dev.notkili.aoc.shared.misc.tuple.Triple;
 import dev.notkili.aoc.shared.misc.tuple.Tuple;
@@ -69,7 +70,7 @@ public class Day10 {
         visited.add(start);
 
         outer:
-        for (var neighbour : start.getNeighbours(false)) {
+        for (var neighbour : start.getNeighbours(Direction.CardArr)) {
             if (map.containsKey(neighbour)) {
                 var pipe = Pipe.fromSymbol(map.get(neighbour));
 
@@ -255,7 +256,7 @@ public class Day10 {
         while (!queue.isEmpty()) {
             var current = queue.poll();
 
-            for (var neighbour : current.getNeighbours(false)) {
+            for (var neighbour : current.getNeighbours(Direction.CardArr)) {
                 if (visited.contains(neighbour))
                     continue;
 

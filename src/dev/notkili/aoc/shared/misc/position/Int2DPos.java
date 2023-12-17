@@ -1,12 +1,13 @@
 package dev.notkili.aoc.shared.misc.position;
 
 import dev.notkili.aoc.shared.input.IntInput;
+import dev.notkili.aoc.shared.misc.collections.list.List;
 import dev.notkili.aoc.shared.misc.collections.set.Set;
 import dev.notkili.aoc.shared.misc.tuple.Tuple;
 
 import java.util.Objects;
 
-public class Int2DPos {
+public class Int2DPos implements Comparable<Int2DPos> {
     private final int x;
     private final int y;
 
@@ -54,6 +55,34 @@ public class Int2DPos {
         return new Int2DPos(this.x - x, this.y - y);
     }
 
+    public Int2DPos mul(Int2DPos pos) {
+        return new Int2DPos(x * pos.x, y * pos.y);
+    }
+
+    public Int2DPos mul(int x, int y) {
+        return new Int2DPos(this.x * x, this.y * y);
+    }
+
+    public Int2DPos mul(int n) {
+        return new Int2DPos(x * n, y * n);
+    }
+
+    public Int2DPos rotate90() {
+        return new Int2DPos(y, -x);
+    }
+
+    public Int2DPos rotate90(int n) {
+        var pos = new Int2DPos(this);
+        for (int i = 0; i < n; i++) {
+            pos = pos.rotate90();
+        }
+        return pos;
+    }
+
+    public Int2DPos rotate180() {
+        return new Int2DPos(-x, -y);
+    }
+
     public Int2DPos north() {
         return new Int2DPos(x, y + 1);
     }
@@ -95,7 +124,7 @@ public class Int2DPos {
     }
 
     public Int2DPos south() {
-        return new Int2DPos(x, y - 1);
+        return add(Direction.SOUTH.delta);
     }
 
     public Int2DPos south(int n) {
@@ -134,26 +163,37 @@ public class Int2DPos {
         return new Int2DPos(this.x - west, this.y + north);
     }
 
-    public Set<Int2DPos> getNeighbours(boolean includeDiagonals) {
-        if(includeDiagonals) {
-            return Set.of(
-                    new Int2DPos(x + 1, y),
-                    new Int2DPos(x - 1, y),
-                    new Int2DPos(x, y + 1),
-                    new Int2DPos(x, y - 1),
-                    new Int2DPos(x + 1, y + 1),
-                    new Int2DPos(x + 1, y - 1),
-                    new Int2DPos(x - 1, y + 1),
-                    new Int2DPos(x - 1, y - 1)
-            );
+    public Set<Int2DPos> getNeighbours(Direction... directions) {
+        var set = new Set<Int2DPos>();
+
+
+        for (Direction direction : directions) {
+            set.add(add(direction.getDelta()));
         }
 
-        return Set.of(
-                new Int2DPos(x + 1, y),
-                new Int2DPos(x - 1, y),
-                new Int2DPos(x, y + 1),
-                new Int2DPos(x, y - 1)
-        );
+        return set;
+    }
+
+    public Set<Int2DPos> getNeighbours(List<Direction> directions) {
+        var set = new Set<Int2DPos>();
+
+
+        for (Direction direction : directions) {
+            set.add(add(direction.getDelta()));
+        }
+
+        return set;
+    }
+
+    public Set<Int2DPos> getNeighbours(Set<Direction> directions) {
+        var set = new Set<Int2DPos>();
+
+
+        for (Direction direction : directions) {
+            set.add(add(direction.getDelta()));
+        }
+
+        return set;
     }
 
     public double distance(Int2DPos pos) {
