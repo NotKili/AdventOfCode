@@ -34,7 +34,7 @@ public class Day17 {
 
             var end = new Int2DPos(backing[0].length - 1, backing.length - 1);
 
-            System.out.println(calculateSP(map, end, 1, 3));
+            calculateSP(map, end, 1, 3).asSolution().print(); //.submit(2023, 17, 1);
         });
     }
 
@@ -52,7 +52,7 @@ public class Day17 {
             }
 
             var end = new Int2DPos(backing[0].length - 1, backing.length - 1);
-            System.out.println(calculateSP(map, end, 4, 10));
+            calculateSP(map, end, 4, 10).asSolution().print(); //.submit(2023, 17, 2);
         });
     }
 
