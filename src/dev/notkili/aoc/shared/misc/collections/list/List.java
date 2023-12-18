@@ -67,6 +67,10 @@ public class List<T> implements IList<T, List<T>> {
         return get((int) index);
     }
 
+    public T last() {
+        return get(size() - 1);
+    }
+
     @Override
     public List<T> add(T element) {
         backingList.add(element);
