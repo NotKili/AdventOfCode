@@ -25,7 +25,7 @@ public class Day18 {
                             .asList()
             );
 
-            new LongInput(new Digger().dig(l)).asSolution().print(); //submit(2023, 18, 2);
+            new LongInput(new Digger().dig(l)).asSolution().print(); //submit(2023, 18, 1);
         });
     }
 
