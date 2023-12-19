@@ -53,8 +53,6 @@ public class Day19 {
                 }
             }
 
-            parts.findAll(p -> p.state == State.ACCEPTED).map(p -> indexed.entrySet().stream().filter(a -> a.getValue() == p).findFirst().get().getKey() + ": " + p.workflows).forEach(System.out::println);
-
             new LongInput(parts.findAll(p -> p.state == State.ACCEPTED).map(Part::sum).reduce(Long::sum).get()).asSolution().print(); // submit(2023, 19, 1);
         });
     }
@@ -285,8 +283,6 @@ public class Day19 {
 
         private String workflow = "in";
 
-        private List<String> workflows = new List<>("in");
-
         private State state = State.IN_PROGRESS;
 
         public Part(long x, long m, long a, long s) {
@@ -311,8 +307,6 @@ public class Day19 {
         }
 
         public void setWorkflow(String workflow) {
-            this.workflows.add(workflow);
-
             if (workflow.equals("A")) {
                 this.state = State.ACCEPTED;
             } else if (workflow.equals("R")) {
