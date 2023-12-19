@@ -3,6 +3,7 @@ package dev.notkili.aoc.shared.misc.collections.list;
 import dev.notkili.aoc.shared.misc.collections.InfiniteList;
 
 import java.util.*;
+import java.util.function.BinaryOperator;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
@@ -252,6 +253,10 @@ public class List<T> implements IList<T, List<T>> {
     @Override
     public List<T> copy() {
         return new List<>(this.backingList);
+    }
+
+    public Optional<T> reduce(BinaryOperator<T> accumulator) {
+        return this.backingList.stream().reduce(accumulator);
     }
 
     @Override
