@@ -118,9 +118,7 @@ public class Day19 {
         }
 
         newPart.setWorkflow(rule.noMatchDest);
-        total = total.add(calculateDistinct(newPart, rules));
-
-        return total;
+        return total.add(calculateDistinct(newPart, rules));
     }
 
     public static class RangedPart {
