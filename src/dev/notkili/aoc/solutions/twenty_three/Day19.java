@@ -37,6 +37,12 @@ public class Day19 {
                     .asList()
             );
 
+            HashMap<Integer, Part> indexed = new HashMap<>();
+
+            for (int i = 0; i < parts.size(); i++) {
+                indexed.put(i, parts.get(i));
+            }
+
             while (parts.containsAny(p -> p.state == State.IN_PROGRESS)) {
                 for (var part : parts) {
                     if (part.state != State.IN_PROGRESS) {
@@ -46,6 +52,8 @@ public class Day19 {
                     ruleMap.get(part.workflow).mapToDest(part);
                 }
             }
+
+            parts.findAll(p -> p.state == State.ACCEPTED).map(p -> indexed.entrySet().stream().filter(a -> a.getValue() == p).findFirst().get().getKey() + ": " + p.workflows).forEach(System.out::println);
 
             new LongInput(parts.findAll(p -> p.state == State.ACCEPTED).map(Part::sum).reduce(Long::sum).get()).asSolution().print(); // submit(2023, 19, 1);
         });
@@ -95,7 +103,7 @@ public class Day19 {
             if (symbol.equals("<")) {
                 // [a, b) | a < c -> [a, c) + [c, b)
                 if (range.min < value) {
-                    newRange.max = value;
+                    newRange.max = Math.min(value, newRange.max);
                     total = total.add(calculateDistinct(copyOfNew, rules));
                 }
 
@@ -277,6 +285,8 @@ public class Day19 {
 
         private String workflow = "in";
 
+        private List<String> workflows = new List<>("in");
+
         private State state = State.IN_PROGRESS;
 
         public Part(long x, long m, long a, long s) {
@@ -301,6 +311,8 @@ public class Day19 {
         }
 
         public void setWorkflow(String workflow) {
+            this.workflows.add(workflow);
+
             if (workflow.equals("A")) {
                 this.state = State.ACCEPTED;
             } else if (workflow.equals("R")) {
@@ -308,6 +320,18 @@ public class Day19 {
             } else {
                 this.workflow = workflow;
             }
+        }
+
+        @Override
+        public String toString() {
+            return "Part{" +
+                    "x=" + x +
+                    ", m=" + m +
+                    ", a=" + a +
+                    ", s=" + s +
+                    ", workflow='" + workflow + '\'' +
+                    ", state=" + state +
+                    '}';
         }
     }
 
