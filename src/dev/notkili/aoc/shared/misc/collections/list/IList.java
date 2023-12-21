@@ -4,6 +4,7 @@ import dev.notkili.aoc.shared.input.LongInput;
 import dev.notkili.aoc.shared.misc.collections.set.ISet;
 
 import java.util.*;
+import java.util.function.BinaryOperator;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
@@ -78,6 +79,8 @@ public interface IList<T, L extends IList<T, L>> extends Iterable<T> {
     L sort(Comparator<T> comparator);
 
     L copy();
+
+    Optional<T> reduce(BinaryOperator<T> accumulator);
 
     L distinct();
 

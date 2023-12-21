@@ -255,6 +255,7 @@ public class List<T> implements IList<T, List<T>> {
         return new List<>(this.backingList);
     }
 
+    @Override
     public Optional<T> reduce(BinaryOperator<T> accumulator) {
         return this.backingList.stream().reduce(accumulator);
     }
