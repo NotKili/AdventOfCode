@@ -60,6 +60,14 @@ public interface IList<T, L extends IList<T, L>> extends Iterable<T> {
 
     L removeIf(Predicate<T> predicate);
 
+    L sublist(int start, int end);
+
+    L sublist(long start, long end);
+
+    L sublist(int start);
+
+    L sublist(long start);
+
     L replace(int index, T element);
 
     L replace(long index, T element);

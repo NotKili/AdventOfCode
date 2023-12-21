@@ -182,6 +182,35 @@ public class List<T> implements IList<T, List<T>> {
     }
 
     @Override
+    public List<T> sublist(int start, int end) {
+        return new List<>(this.backingList.subList(start, end));
+    }
+
+    @Override
+    public List<T> sublist(long start, long end) {
+        if (start >= Integer.MAX_VALUE)
+            throw new IndexOutOfBoundsException("Index '" + start + "' too large for int");
+
+        if (end >= Integer.MAX_VALUE)
+            throw new IndexOutOfBoundsException("Index '" + end + "' too large for int");
+
+        return sublist((int) start, (int) end);
+    }
+
+    @Override
+    public List<T> sublist(int start) {
+        return new List<>(this.backingList.subList(start, size()));
+    }
+
+    @Override
+    public List<T> sublist(long start) {
+        if (start >= Integer.MAX_VALUE)
+            throw new IndexOutOfBoundsException("Index '" + start + "' too large for int");
+
+        return sublist((int) start);
+    }
+
+    @Override
     public List<T> replace(int index, T element) {
         this.backingList.set(index, element);
         return this;
