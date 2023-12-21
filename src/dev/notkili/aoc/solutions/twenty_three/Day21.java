@@ -63,7 +63,7 @@ public class Day21 {
 
             var list = new List<Long>();
 
-            calculateMaxReachable(394, start, map, true, backing.length, backing[0].length).asSolution().print(); //.submit(2023, 21, 2);
+            calculateMaxReachable(394, start, map, true, backing.length, backing[0].length); //.submit(2023, 21, 2);
 
             for (int i = 0; i < 394; i++) {
                 if (i % 131 == 65) {
