@@ -68,6 +68,8 @@ public interface IList<T, L extends IList<T, L>> extends Iterable<T> {
 
     L sublist(long start);
 
+    IList<L, ?> group(int n);
+
     L replace(int index, T element);
 
     L replace(long index, T element);

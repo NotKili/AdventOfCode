@@ -211,6 +211,19 @@ public class List<T> implements IList<T, List<T>> {
     }
 
     @Override
+    public List<List<T>> group(int n) {
+        if (size() % n != 0) throw new IllegalArgumentException("Cannot group list of size " + size() + " into groups of size " + n + ".");
+
+        List<List<T>> groups = new List<>();
+
+        for (int i = 0; i < size(); i += n) {
+            groups.add(sublist(i, i + n));
+        }
+
+        return groups;
+    }
+
+    @Override
     public List<T> replace(int index, T element) {
         this.backingList.set(index, element);
         return this;
