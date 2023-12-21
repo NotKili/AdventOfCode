@@ -231,11 +231,9 @@ public class Day20 {
             }
 
             if (pulse == Pulse.LOW) {
-                var prev = on;
-
                 on = !on;
 
-                if (!prev) {
+                if (on) {
                     return connectedModules.map(m -> new Triple<>(getId(), Pulse.HIGH, m));
                 } else {
                     return connectedModules.map(m -> new Triple<>(getId(), Pulse.LOW, m));
