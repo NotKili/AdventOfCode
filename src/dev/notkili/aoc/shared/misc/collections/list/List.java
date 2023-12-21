@@ -68,6 +68,12 @@ public class List<T> implements IList<T, List<T>> {
         return get((int) index);
     }
 
+    @Override
+    public T first() {
+        return get(0);
+    }
+
+    @Override
     public T last() {
         return get(size() - 1);
     }

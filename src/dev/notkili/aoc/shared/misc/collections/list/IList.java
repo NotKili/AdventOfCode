@@ -26,6 +26,10 @@ public interface IList<T, L extends IList<T, L>> extends Iterable<T> {
 
     T get(long index);
 
+    T first();
+
+    T last();
+
     L add(T element);
 
     L add(int index, T element);
