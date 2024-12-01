@@ -47,6 +47,10 @@ public class StringInput implements Input<StringInput> {
     public boolean isEmpty() {
         return input.isEmpty();
     }
+    
+    public boolean isBlank() {
+        return input.isBlank();
+    }
 
     public boolean endsWith(String suffix) {
         return input.endsWith(suffix);
