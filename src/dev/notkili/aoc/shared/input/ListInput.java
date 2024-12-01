@@ -1,12 +1,10 @@
 package dev.notkili.aoc.shared.input;
 
+import dev.notkili.aoc.shared.misc.collections.Counter;
 import dev.notkili.aoc.shared.misc.tuple.Triple;
 import dev.notkili.aoc.shared.misc.tuple.Tuple;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.function.BinaryOperator;
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -41,12 +39,19 @@ public class ListInput<I> implements Iterable<I> {
         inputs.add(value);
     }
 
-    public void remove(int index) {
+    public ListInput<I> remove(int index) {
         inputs.remove(index);
+        return this;
+    }
+    
+    public ListInput<I> removeIf(Predicate<I> pred) {
+        inputs.removeIf(pred);
+        return this;
     }
 
-    public void remove(I value) {
+    public ListInput<I> remove(I value) {
         inputs.remove(value);
+        return this;
     }
 
     public boolean contains(I value) {
@@ -63,6 +68,12 @@ public class ListInput<I> implements Iterable<I> {
 
     public boolean containsNone(List<I> values) {
         return values.stream().noneMatch(inputs::contains);
+    }
+
+    public ListInput<I> reverse() {
+        List<I> reversed = new ArrayList<>(inputs);
+        java.util.Collections.reverse(reversed);
+        return new ListInput<>(reversed);
     }
 
     public int size() {
@@ -205,12 +216,30 @@ public class ListInput<I> implements Iterable<I> {
         return inputs.stream().reduce(reducer);
     }
 
+    public IntInput distinctCount() {
+        return new IntInput((int) inputs.stream().distinct().count());
+    }
+    
+    public ListInput<I> sort(Comparator<I> comparator) {
+        List<I> sorted = new ArrayList<>(inputs);
+        sorted.sort(comparator);
+        return new ListInput<>(sorted);
+    }
+    
+    public Counter<I> count() {
+        return new Counter<>(inputs);
+    }
+
     @Override
     public Iterator<I> iterator() {
         return inputs.iterator();
     }
 
     public static class IntListInput extends ListInput<IntInput> {
+
+        public IntListInput() {
+            super(new ArrayList<>());
+        }
         public IntListInput(List<IntInput> inputs) {
             super(inputs);
         }
