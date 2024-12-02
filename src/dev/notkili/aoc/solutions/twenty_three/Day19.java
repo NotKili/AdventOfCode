@@ -53,7 +53,7 @@ public class Day19 {
                 }
             }
 
-            new LongInput(parts.findAll(p -> p.state == State.ACCEPTED).map(Part::sum).reduce(Long::sum).get()).asSolution().print(); // submit(2023, 19, 1);
+            new LongInput(parts.findAll(p -> p.state == State.ACCEPTED).map(Part::sum).reduce(Long::sum).get()).solution().print(); // submit(2023, 19, 1);
         });
     }
 
@@ -72,7 +72,7 @@ public class Day19 {
 
             var startingPart = new RangedPart(new Range(1, 4001), new Range(1, 4001), new Range(1, 4001), new Range(1, 4001));
 
-            calculateDistinct(startingPart, ruleMap).asSolution().print(); // submit(2023, 19, 2);
+            calculateDistinct(startingPart, ruleMap).solution().print(); // submit(2023, 19, 2);
         });
     }
 

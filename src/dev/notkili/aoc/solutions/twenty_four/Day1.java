@@ -41,7 +41,7 @@ public class Day1 {
 
             for (Integer firstNum : firstNums) {
                 sum = sum.add(
-                        firstNum * counts.getCountFor(firstNum).asInt()
+                        firstNum * counts.count(firstNum).asInt()
                 );
             }
             

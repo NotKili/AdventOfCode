@@ -30,12 +30,12 @@ public class CombinedKey {
     }
     
     public CombinedKey remove(int index) {
-        keys.remove(index);
+        keys.rem(index);
         return this;
     }
     
     public CombinedKey remove(Object key) {
-        keys.remove(key);
+        keys.rem(key);
         return this;
     }
     

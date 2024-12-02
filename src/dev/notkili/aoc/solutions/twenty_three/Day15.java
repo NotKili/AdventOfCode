@@ -1,6 +1,5 @@
 package dev.notkili.aoc.solutions.twenty_three;
 
-import dev.notkili.aoc.shared.input.CharInput;
 import dev.notkili.aoc.shared.input.IntInput;
 import dev.notkili.aoc.shared.input.LongInput;
 import dev.notkili.aoc.shared.input.StringInput;
@@ -25,7 +24,7 @@ public class Day15 {
                      .mapToInt(str -> new IntInput(hashString(str.asString())))
                      .reduce(IntInput::add)
                      .get()
-                     .asSolution().print();//submit(2023, 15, 1);
+                     .solution().print();//submit(2023, 15, 1);
          });
     }
 
@@ -45,7 +44,7 @@ public class Day15 {
                         var l = map.get(hash);
 
                         l.find(t -> t.getA().equals(label)).ifPresentOrElse(t -> {
-                            l.replaceFirst(t, new Tuple<>(label, focalLength));
+                            l.replFirst(t, new Tuple<>(label, focalLength));
                         }, () -> {
                             l.add(new Tuple<>(label, focalLength));
                         });
@@ -62,7 +61,7 @@ public class Day15 {
                     }
 
                     var l = map.get(hash);
-                    l.removeIf(t -> t.getA().equals(label));
+                    l.rem(t -> t.getA().equals(label));
                 }
             });
 
@@ -80,7 +79,7 @@ public class Day15 {
                 }
             }
 
-            sum.asSolution().print(); //.submit(2023, 15, 2);
+            sum.solution().print(); //.submit(2023, 15, 2);
         });
     }
 

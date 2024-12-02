@@ -151,7 +151,7 @@ public class DoubleInput implements Input<DoubleInput> {
     }
 
     @Override
-    public Solution asSolution() {
+    public Solution solution() {
         return new Solution(value + "");
     }
 }

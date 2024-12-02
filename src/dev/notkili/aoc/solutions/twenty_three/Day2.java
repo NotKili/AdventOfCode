@@ -37,7 +37,7 @@ public class Day2 {
                         return id;
                     })
                             .sum()
-                            .asSolution()
+                            .solution()
                             .print();//.submit(2023, 2, 1);
                 });
 
@@ -65,7 +65,7 @@ public class Day2 {
                         return cmin.values().stream().reduce(IntInput::multiply).get();
                     })
                             .sum()
-                            .asSolution()
+                            .solution()
                             .print();//.submit(2023, 2, 2);
                 });
     }

@@ -34,7 +34,7 @@ public class Day6 {
                 result = result.multiply(res);
             }
 
-            result.asSolution().print();//.submit(2023, 6, 1);
+            result.solution().print();//.submit(2023, 6, 1);
         });
     }
 
@@ -80,7 +80,7 @@ public class Day6 {
                 result = result.multiply(res);
             }
 
-            result.asSolution().print();//.submit(2023, 6, 2);
+            result.solution().print();//.submit(2023, 6, 2);
         });
     }
 }

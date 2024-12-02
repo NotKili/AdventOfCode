@@ -7,8 +7,6 @@ import dev.notkili.aoc.shared.misc.collections.list.List;
 import dev.notkili.aoc.shared.misc.collections.set.Set;
 import dev.notkili.aoc.shared.misc.position.Direction;
 import dev.notkili.aoc.shared.misc.position.Int2DPos;
-import dev.notkili.aoc.shared.misc.position.Int3DPos;
-import dev.notkili.aoc.shared.misc.tuple.Quadruple;
 import dev.notkili.aoc.shared.misc.tuple.Triple;
 import dev.notkili.aoc.shared.misc.tuple.Tuple;
 import dev.notkili.aoc.shared.parse.InputParser;
@@ -50,7 +48,7 @@ public class Day23 {
             }
 
             var nodes = flattenPart1(start, end, map);
-            findLongestPathBetween(nodes.get(start), nodes.get(end), nodes).asSolution().print();
+            findLongestPathBetween(nodes.get(start), nodes.get(end), nodes).solution().print();
         });
     }
 
@@ -83,7 +81,7 @@ public class Day23 {
             }
 
             var nodes = flattenPart2(start, end, map);
-            findLongestPathBetween(nodes.get(start), nodes.get(end), nodes).asSolution().print();
+            findLongestPathBetween(nodes.get(start), nodes.get(end), nodes).solution().print();
         });
     }
 

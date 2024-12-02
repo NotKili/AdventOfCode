@@ -23,7 +23,7 @@ public class Day13 {
             var sumRow = reflections.findAll(Triple::getC).mapTo(Triple::getA).reduce(Integer::sum).orElse(0) * 100L;
             var sumCol = reflections.findAll(t -> !t.getC()).mapTo(Triple::getA).reduce(Integer::sum).orElse(0);
 
-            new LongInput(sumRow + sumCol).asSolution().print();
+            new LongInput(sumRow + sumCol).solution().print();
         });
     }
 
@@ -45,7 +45,7 @@ public class Day13 {
              var sumRow = reflections.findAll(Triple::getC).mapTo(Triple::getA).reduce(Integer::sum).orElse(0) * 100L;
              var sumCol = reflections.findAll(t -> !t.getC()).mapTo(Triple::getA).reduce(Integer::sum).orElse(0);
 
-             new LongInput(sumRow + sumCol).asSolution().print();
+             new LongInput(sumRow + sumCol).solution().print();
          });
     }
 

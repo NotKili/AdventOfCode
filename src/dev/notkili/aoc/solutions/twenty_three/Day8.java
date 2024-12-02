@@ -46,7 +46,7 @@ public class Day8 {
                     count = count.add(1);
 
                     if (current.asString().equals("ZZZ")) {
-                        count.asSolution().print(); // submit(2023, 8, 1);
+                        count.solution().print(); // submit(2023, 8, 1);
                         return;
                     }
                 }
@@ -121,7 +121,7 @@ public class Day8 {
                 intervals.put(start, factors(factor));
             }
 
-            new LongInput(kgv(intervals.values().toArray(new Integer[0][]))).asSolution().print(); // submit(2023, 8, 2);
+            new LongInput(kgv(intervals.values().toArray(new Integer[0][]))).solution().print(); // submit(2023, 8, 2);
         });
     }
 

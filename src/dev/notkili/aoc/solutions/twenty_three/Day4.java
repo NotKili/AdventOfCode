@@ -50,7 +50,7 @@ public class Day4 {
                 } else {
                     return new IntInput((int) Math.pow(2, intersect.size() - 1));
                 }
-            }).sum().asSolution().print();//.submit(2023, 4, 1);
+            }).sum().solution().print();//.submit(2023, 4, 1);
         });
 
 
@@ -106,7 +106,7 @@ public class Day4 {
                 }
             }
 
-            map.values().stream().reduce(Count::increment).get().asLongInput().asSolution().print(); //.submit(2023, 4, 2);
+            map.values().stream().reduce(Count::increment).get().asLongInput().solution().print(); //.submit(2023, 4, 2);
         });
     }
 }

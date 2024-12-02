@@ -191,7 +191,7 @@ public class LongInput implements Input<LongInput> {
     }
 
     @Override
-    public Solution asSolution() {
+    public Solution solution() {
         return new Solution(value + "");
     }
 }

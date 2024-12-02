@@ -1,6 +1,5 @@
 package dev.notkili.aoc.shared.misc.collections.set;
 
-import dev.notkili.aoc.shared.misc.collections.list.IList;
 import dev.notkili.aoc.shared.misc.collections.list.List;
 
 import java.util.Collection;
@@ -251,5 +250,10 @@ public class Set<T> implements ISet<T, Set<T>> {
     @Override
     public boolean equals(Object obj) {
         return obj instanceof Set<?> set && backingSet.equals(set.backingSet);
+    }
+
+    @Override
+    public String toString() {
+        return "Set: " + backingSet;
     }
 }

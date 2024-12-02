@@ -11,7 +11,6 @@ import dev.notkili.aoc.shared.misc.tuple.Tuple;
 import dev.notkili.aoc.shared.parse.InputParser;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Day17 {
     public static void main(String[] args) {
@@ -34,7 +33,7 @@ public class Day17 {
 
             var end = new Int2DPos(backing[0].length - 1, backing.length - 1);
 
-            calculateSP(map, end, 1, 3).asSolution().print(); //.submit(2023, 17, 1);
+            calculateSP(map, end, 1, 3).solution().print(); //.submit(2023, 17, 1);
         });
     }
 
@@ -52,7 +51,7 @@ public class Day17 {
             }
 
             var end = new Int2DPos(backing[0].length - 1, backing.length - 1);
-            calculateSP(map, end, 4, 10).asSolution().print(); //.submit(2023, 17, 2);
+            calculateSP(map, end, 4, 10).solution().print(); //.submit(2023, 17, 2);
         });
     }
 

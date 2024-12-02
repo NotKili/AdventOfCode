@@ -27,7 +27,7 @@ public class Day10 {
             var map = parsed.getB();
 
             var mostDistantLocation = findLoop(start, map, true);
-            new IntInput(mostDistantLocation.getB()).asSolution().print(); //.submit(2023, 10, 1);
+            new IntInput(mostDistantLocation.getB()).solution().print(); //.submit(2023, 10, 1);
         });
     }
 
@@ -242,7 +242,7 @@ public class Day10 {
                             .map(p -> new Int2DPos(p.getX() / 2, p.getY() / 2))
                             .distinct()
                             .count())
-                    .asSolution().print();//.submit(2023, 10, 2);
+                    .solution().print();//.submit(2023, 10, 2);
         });
     }
 

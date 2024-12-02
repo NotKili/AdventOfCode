@@ -54,14 +54,14 @@ public class Day24 {
                 }
             }
 
-            collisions.removeIf(p -> {
+            collisions.rem(p -> {
                 var x = p.getC().getA();
                 var y = p.getC().getB();
 
                 return x < min || x > max || y < min || y > max;
             });
 
-            new IntInput(collisions.size()).asSolution().print(); //.submit(2023, 24, 1);
+            new IntInput(collisions.size()).solution().print(); //.submit(2023, 24, 1);
         });
     }
 
@@ -98,7 +98,7 @@ public class Day24 {
             System.out.print("Enter z: ");
             var z = Long.parseLong(scanner.nextLine());
 
-            new LongInput(x + y + z).asSolution().print(); // .submit(2023, 24, 2);
+            new LongInput(x + y + z).solution().print(); // .submit(2023, 24, 2);
         });
     }
 

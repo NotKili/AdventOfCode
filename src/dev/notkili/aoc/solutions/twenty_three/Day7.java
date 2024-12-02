@@ -54,7 +54,7 @@ public class Day7 {
                 }
             }
 
-            result.asSolution().print();//.submit(2023, 7, 1);
+            result.solution().print();//.submit(2023, 7, 1);
         });
     }
 
@@ -165,7 +165,7 @@ public class Day7 {
                 }
             }
 
-            result.asSolution().print(); //.submit(2023, 7, 2);
+            result.solution().print(); //.submit(2023, 7, 2);
         });
     }
 
@@ -173,27 +173,27 @@ public class Day7 {
         Counter<String> c = new Counter<>();
         c.add(cards);
 
-        if (c.getSize() == 1) {
+        if (c.size() == 1) {
             return 7; // 5 of a kind
-        } else if (c.getSize() == 2) {
-            var firstContained = c.getCountFor(cards.get(0)).asInt();
+        } else if (c.size() == 2) {
+            var firstContained = c.count(cards.get(0)).asInt();
 
             if (firstContained == 1 || firstContained == 4) {
                 return 6; // Four of a kind
             } else {
                 return 5; // Full house
             }
-        } else if (c.getSize() == 3) {
+        } else if (c.size() == 3) {
             for (var ca : cards) {
-                if (c.getCountFor(ca).asInt() == 3) {
+                if (c.count(ca).asInt() == 3) {
                     return 4; // 3 of a kind
-                } else if (c.getCountFor(ca).asInt() == 2) {
+                } else if (c.count(ca).asInt() == 2) {
                     return 3; // 2 pairs
                 }
             }
 
             throw new RuntimeException("");
-        } else if (c.getSize() == 4) {
+        } else if (c.size() == 4) {
             return 2; // 1 pair
         } else {
             return 1; // High card
@@ -204,31 +204,31 @@ public class Day7 {
         Counter<String> c = new Counter<>();
         c.add(cards);
 
-        if (c.getSize() == 1) {
+        if (c.size() == 1) {
             return 7; // 5 of a kind
-        } else if (c.getSize() == 2) {
-            if (c.getCountFor("J").getCount() != 0) {
+        } else if (c.size() == 2) {
+            if (c.count("J").getCount() != 0) {
                 return 7;
             }
 
-            var firstContained = c.getCountFor(cards.get(0)).asInt();
+            var firstContained = c.count(cards.get(0)).asInt();
 
             if (firstContained == 1 || firstContained == 4) {
                 return 6; // Four of a kind
             } else {
                 return 5; // Full house
             }
-        } else if (c.getSize() == 3) {
-            if (c.getCountFor("J").getCount() != 0) {
-                var elems = c.keys().remove("J");
+        } else if (c.size() == 3) {
+            if (c.count("J").getCount() != 0) {
+                var elems = c.keys().rem("J");
                 var elem1 = elems.get(0);
                 var elem2 = elems.get(1);
-                var jCount = c.getCountFor("J").getCount();
+                var jCount = c.count("J").getCount();
 
                 if (jCount == 1) {
-                    if (c.getCountFor(elem1).getCount() == 3 || c.getCountFor(elem2).getCount() == 3) {
+                    if (c.count(elem1).getCount() == 3 || c.count(elem2).getCount() == 3) {
                         return 6; // Four of a kind, 3 + 1 + J
-                    } else if (c.getCountFor(elem1).getCount() == 2 && c.getCountFor(elem2).getCount() == 2) {
+                    } else if (c.count(elem1).getCount() == 2 && c.count(elem2).getCount() == 2) {
                         return 5; // Full house, 2 + 2 + J
                     }
                 } else  {
@@ -237,21 +237,21 @@ public class Day7 {
             }
 
             for (var ca : cards) {
-                if (c.getCountFor(ca).asInt() == 3) {
+                if (c.count(ca).asInt() == 3) {
                     return 4; // 3 of a kind
-                } else if (c.getCountFor(ca).asInt() == 2) {
+                } else if (c.count(ca).asInt() == 2) {
                     return 3; // 2 pairs
                 }
             }
 
             throw new RuntimeException("");
-        } else if (c.getSize() == 4) {
-            if (c.getCountFor("J").getCount() != 0) {
+        } else if (c.size() == 4) {
+            if (c.count("J").getCount() != 0) {
                 return 4; // 3 of a kind
             }
             return 2; // 1 pair
         } else {
-            if (c.getCountFor("J").getCount() != 0) {
+            if (c.count("J").getCount() != 0) {
                 return 2; // One pair
             }
             return 1; // High card

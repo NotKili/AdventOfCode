@@ -277,7 +277,7 @@ public class StringInput implements Input<StringInput> {
                     var result = matcher.group();
 
                     if (result.length() != 1) {
-                        return IntInput.parseLiteral(result);
+                        return IntInput.literal(result);
                     }
 
                     return new IntInput(matcher.group());
@@ -318,7 +318,7 @@ public class StringInput implements Input<StringInput> {
                     var result = matcher.group();
 
                     if (result.length() != 1) {
-                        return IntInput.parseLiteral(new StringInput(result).reverse().asString());
+                        return IntInput.literal(new StringInput(result).reverse().asString());
                     }
 
                     return new IntInput(matcher.group());
@@ -434,7 +434,7 @@ public class StringInput implements Input<StringInput> {
     }
 
     @Override
-    public Solution asSolution() {
+    public Solution solution() {
         return new Solution(input);
     }
 }

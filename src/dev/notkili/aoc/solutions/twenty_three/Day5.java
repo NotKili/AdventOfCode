@@ -81,7 +81,7 @@ public class Day5 {
                 }
             }
 
-            min.asSolution().print();//.submit(2023, 5, 1);
+            min.solution().print();//.submit(2023, 5, 1);
         });
     }
 
@@ -146,7 +146,7 @@ public class Day5 {
                     .map(range -> range.lower)
                     .min(Comparator.comparing(a -> a))
                     .ifPresentOrElse(min -> {
-                        new LongInput(min).asSolution().print();//.submit(2023, 5, 2);
+                        new LongInput(min).solution().print();//.submit(2023, 5, 2);
             }, () -> System.err.println("No solution found"));
         });
     }

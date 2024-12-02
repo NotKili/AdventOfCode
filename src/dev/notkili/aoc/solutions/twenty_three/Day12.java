@@ -35,7 +35,7 @@ public class Day12 {
                     .map(LongInput::new)
                     .reduce(LongInput::add)
                     .get()
-                    .asSolution()
+                    .solution()
                     .print(); //.submit(2023, 12, 1);
         });
     }
@@ -59,7 +59,7 @@ public class Day12 {
                     .map(LongInput::new)
                     .reduce(LongInput::add)
                     .get()
-                    .asSolution()
+                    .solution()
                     .print();//.submit(2023, 12, 2);
         });
     }

@@ -220,6 +220,14 @@ public class ListInput<I> implements Iterable<I> {
         return new IntInput((int) inputs.stream().distinct().count());
     }
     
+    public ListInput<I> sort() {
+        if (get(0) instanceof Comparable) {
+            return sort((Comparator<I>) Comparator.naturalOrder());
+        }
+        
+        return this;
+    }
+    
     public ListInput<I> sort(Comparator<I> comparator) {
         List<I> sorted = new ArrayList<>(inputs);
         sorted.sort(comparator);

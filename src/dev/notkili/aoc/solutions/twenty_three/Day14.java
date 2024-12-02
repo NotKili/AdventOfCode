@@ -2,16 +2,13 @@ package dev.notkili.aoc.solutions.twenty_three;
 
 import dev.notkili.aoc.shared.input.ArrayInput2D;
 import dev.notkili.aoc.shared.input.CharInput;
-import dev.notkili.aoc.shared.input.Input;
 import dev.notkili.aoc.shared.input.IntInput;
 import dev.notkili.aoc.shared.misc.TimeTracker;
-import dev.notkili.aoc.shared.misc.collections.list.List;
 import dev.notkili.aoc.shared.misc.collections.set.Set;
 import dev.notkili.aoc.shared.parse.InputParser;
 
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.Objects;
 
 public class Day14 {
     public static void main(String[] args) {
@@ -23,7 +20,7 @@ public class Day14 {
         new InputParser(2023, 14).getInput().ifPresent(input -> {
             var platform = new Platform(ArrayInput2D.parse(input).getBackingArray());
             platform.tiltNorth();
-            platform.calcLoad().asSolution().print(); //.submit(2023, 14, 1);
+            platform.calcLoad().solution().print(); //.submit(2023, 14, 1);
 
         });
     }
@@ -56,7 +53,7 @@ public class Day14 {
             var loopStart = platformToCycle.get(platform);
             var mod = (int) ((1000000000L - loopStart) % (cycle - loopStart)) + loopStart;
 
-            cycleToPlatform.get(mod).calcLoad().asSolution().print(); //.submit(2023, 14, 2);
+            cycleToPlatform.get(mod).calcLoad().solution().print(); //.submit(2023, 14, 2);
         });
     }
 

@@ -90,7 +90,7 @@ public class Day22 {
                 }
             });
 
-            new IntInput(count.getCount()).asSolution().print(); //.submit(2023, 22, 1);
+            new IntInput(count.getCount()).solution().print(); //.submit(2023, 22, 1);
         });
     }
 
@@ -181,7 +181,7 @@ public class Day22 {
             }
 
 
-            count.asSolution().print();
+            count.solution().print();
         });
     }
 

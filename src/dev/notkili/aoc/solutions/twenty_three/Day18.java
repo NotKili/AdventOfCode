@@ -25,7 +25,7 @@ public class Day18 {
                             .asList()
             );
 
-            new LongInput(new Digger().dig(l)).asSolution().print(); //submit(2023, 18, 1);
+            new LongInput(new Digger().dig(l)).solution().print(); //submit(2023, 18, 1);
         });
     }
 
@@ -37,13 +37,13 @@ public class Day18 {
                             .mapTo(tr -> tr.getC().asString().replace("(", "").replace(")", ""))
                             .mapTo(s -> new Tuple<>(
                                     mapDir(new IntInput(s.charAt(s.length() - 1) + "").asInt()),
-                                    IntInput.parseHex(s.substring(1, s.length() - 1)).asLong()
+                                    IntInput.hex(s.substring(1, s.length() - 1)).asLong()
                                     )
                             )
                             .asList()
             );
 
-            new LongInput(new Digger().dig(l)).asSolution().print(); //submit(2023, 18, 2);
+            new LongInput(new Digger().dig(l)).solution().print(); //submit(2023, 18, 2);
         });
     }
 

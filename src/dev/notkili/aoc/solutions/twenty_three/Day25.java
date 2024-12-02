@@ -4,20 +4,13 @@ import dev.notkili.aoc.shared.input.LongInput;
 import dev.notkili.aoc.shared.input.StringInput;
 import dev.notkili.aoc.shared.misc.TimeTracker;
 import dev.notkili.aoc.shared.misc.collections.set.Set;
-import dev.notkili.aoc.shared.misc.tuple.Tuple;
 import dev.notkili.aoc.shared.parse.InputParser;
 import org.jgrapht.Graph;
-import org.jgrapht.GraphType;
 import org.jgrapht.alg.StoerWagnerMinimumCut;
-import org.jgrapht.graph.AsUndirectedGraph;
 import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.graph.SimpleGraph;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.function.Supplier;
 
 public class Day25 {
     public static void main(String[] args) {
@@ -52,13 +45,13 @@ public class Day25 {
 
             var minCut = new StoerWagnerMinimumCut<>(graph).minCut();
 
-            new LongInput(minCut.size() * (nodes.size() - minCut.size())).asSolution().print();
+            new LongInput(minCut.size() * (nodes.size() - minCut.size())).solution().print();
         });
     }
 
     public static void part2() {
         new InputParser(2023, 25).getInput().ifPresent(input -> {
-            new StringInput("Just press the button").asSolution().print();
+            new StringInput("Just press the button").solution().print();
         });
     }
 

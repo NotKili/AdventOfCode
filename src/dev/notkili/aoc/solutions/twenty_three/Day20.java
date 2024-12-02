@@ -97,7 +97,7 @@ public class Day20 {
                 lowCount.increment(m.lowCount);
             });
 
-            new LongInput(highCount.getCount() * lowCount.getCount()).asSolution().print();
+            new LongInput(highCount.getCount() * lowCount.getCount()).solution().print();
         });
     }
 
@@ -184,7 +184,7 @@ public class Day20 {
                 }
             }
 
-            new LongInput(srcCycles.values().stream().reduce(1L, (a, b) -> a * b)).asSolution().print();
+            new LongInput(srcCycles.values().stream().reduce(1L, (a, b) -> a * b)).solution().print();
         });
     }
 

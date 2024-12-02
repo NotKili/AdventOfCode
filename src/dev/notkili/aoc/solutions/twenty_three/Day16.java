@@ -30,7 +30,7 @@ public class Day16 {
                 }
             }
 
-            calcEnergizedTile(tiles, new Int2DPos(-1, 0), new Tuple<>(1, 0)).asSolution().print();
+            calcEnergizedTile(tiles, new Int2DPos(-1, 0), new Tuple<>(1, 0)).solution().print();
         });
     }
 
@@ -64,7 +64,7 @@ public class Day16 {
                 max = max.max(calcEnergizedTile(tiles, new Int2DPos(arr[0].length, y), new Tuple<>(-1, 0)));
             }
 
-            max.asSolution().print();
+            max.solution().print();
         });
     }
 

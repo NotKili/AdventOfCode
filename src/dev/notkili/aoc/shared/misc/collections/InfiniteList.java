@@ -42,33 +42,33 @@ public class InfiniteList<T> extends List<T> {
     }
 
     @Override
-    public List<T> remove(int index) {
-        return super.remove(mapIndex(index));
+    public List<T> rem(int index) {
+        return super.rem(mapIndex(index));
     }
 
     @Override
-    public List<T> remove(long index) {
-        return super.remove(mapIndex(index));
+    public List<T> rem(long index) {
+        return super.rem(mapIndex(index));
     }
 
     @Override
-    public List<T> replace(int index, T element) {
-        return super.replace(mapIndex(index), element);
+    public List<T> repl(int index, T element) {
+        return super.repl(mapIndex(index), element);
     }
 
     @Override
-    public List<T> replace(long index, T element) {
-        return super.replace(mapIndex(index), element);
+    public List<T> repl(long index, T element) {
+        return super.repl(mapIndex(index), element);
     }
 
     @Override
-    public List<T> replace(int index, Function<T, T> modifier) {
-        return super.replace(mapIndex(index), modifier);
+    public List<T> repl(int index, Function<T, T> modifier) {
+        return super.repl(mapIndex(index), modifier);
     }
 
     @Override
-    public List<T> replace(long index, Function<T, T> modifier) {
-        return super.replace(mapIndex(index), modifier);
+    public List<T> repl(long index, Function<T, T> modifier) {
+        return super.repl(mapIndex(index), modifier);
     }
 
     @Override
@@ -140,7 +140,7 @@ public class InfiniteList<T> extends List<T> {
         public void remove() {
             checkForCoModification();
             expectedSize--;
-            InfiniteList.this.remove(cursor);
+            InfiniteList.this.rem(cursor);
         }
 
         @Override
@@ -176,7 +176,7 @@ public class InfiniteList<T> extends List<T> {
         public void remove() {
             checkForCoModification();
             expectedSize--;
-            InfiniteList.this.remove(cursor);
+            InfiniteList.this.rem(cursor);
             cursor--;
         }
     }

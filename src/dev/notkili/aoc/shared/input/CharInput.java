@@ -51,7 +51,7 @@ public class CharInput implements Input<CharInput> {
     }
 
     @Override
-    public Solution asSolution() {
+    public Solution solution() {
         return new Solution(c + "");
     }
 }

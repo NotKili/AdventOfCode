@@ -37,7 +37,7 @@ public class Day21 {
                 }
             }
 
-            calculateMaxReachable(64, start, map, false, backing.length, backing[0].length).asSolution().print(); //.submit(2023, 21, 1);
+            calculateMaxReachable(64, start, map, false, backing.length, backing[0].length).solution().print(); //.submit(2023, 21, 1);
         });
     }
 
@@ -71,17 +71,23 @@ public class Day21 {
                 }
             }
 
+            for (int i = 0; i < numbers.size(); i++) {
+                System.out.println(i + ": " + numbers.get(i));
+            }
+
             var x = 26501365 / 131;
             var l1 = list.get(0);
             var l2 = list.get(1);
             var l3 = list.get(2);
+
+            System.out.println("l1 = " + l1 + ", l2 = " + l2 + ", l3 = " + l3);
 
             // ax^2 + bx + c
             // c = l1
             // a = (l3 + c - 2*l2) / 2
             // b = l2 - c - a
 
-            new LongInput((long) (((l3 + l1 - 2*l2) / 2) * Math.pow(x, 2) + (l2 - l1 - (l3 + l1 - 2*l2) / 2) * x + l1)).asSolution().print(); //submit(2023, 21, 2);
+            new LongInput((long) (((l3 + l1 - 2*l2) / 2) * Math.pow(x, 2) + (l2 - l1 - (l3 + l1 - 2*l2) / 2) * x + l1)).solution().print(); //submit(2023, 21, 2);
         });
     }
 

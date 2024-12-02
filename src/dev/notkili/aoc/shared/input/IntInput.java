@@ -11,23 +11,23 @@ import java.util.function.Predicate;
 public class IntInput implements Input<IntInput> {
     private final int value;
 
-    public static IntInput parseRadix(String value, int radix) {
+    public static IntInput radix(String value, int radix) {
         return new IntInput(Integer.parseInt(value, radix));
     }
 
-    public static IntInput parseHex(String value) {
+    public static IntInput hex(String value) {
         return new IntInput(Integer.parseInt(value, 16));
     }
 
-    public static IntInput parseOctal(String value) {
+    public static IntInput oct(String value) {
         return new IntInput(Integer.parseInt(value, 8));
     }
 
-    public static IntInput parseBinary(String value) {
+    public static IntInput bin(String value) {
         return new IntInput(Integer.parseInt(value, 2));
     }
 
-    public static IntInput parseLiteral(String value) {
+    public static IntInput literal(String value) {
         return switch (value.toLowerCase(Locale.ROOT)) {
             case "zero" -> new IntInput(0);
             case "one" -> new IntInput(1);
@@ -232,7 +232,7 @@ public class IntInput implements Input<IntInput> {
     }
 
     @Override
-    public Solution asSolution() {
+    public Solution solution() {
         return new Solution(value + "");
     }
 }

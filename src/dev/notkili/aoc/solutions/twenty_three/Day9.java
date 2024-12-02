@@ -23,7 +23,7 @@ public class Day9 {
                 result = result.add(tmp);
             }
 
-            result.asSolution().print();//.submit(2023, 9, 1);
+            result.solution().print();//.submit(2023, 9, 1);
         });
     }
 
@@ -38,7 +38,7 @@ public class Day9 {
                 result = result.add(tmp);
             }
 
-            result.asSolution().print();//.submit(2023, 9, 2);
+            result.solution().print();//.submit(2023, 9, 2);
         });
     }
 

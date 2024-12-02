@@ -7,9 +7,7 @@ import dev.notkili.aoc.shared.misc.position.Int2DPos;
 import dev.notkili.aoc.shared.misc.tuple.Tuple;
 import dev.notkili.aoc.shared.parse.InputParser;
 
-import java.awt.geom.Point2D;
 import java.util.HashMap;
-import java.util.List;
 
 public class Day11 {
     public static void main(String[] args) {
@@ -21,13 +19,13 @@ public class Day11 {
     // 9157600
     private static void part1() {
         new InputParser(2023, 11).getInput().ifPresent(input -> {
-            calculateMinDistanceSum(calculateGalaxies(inputToArray(input), 2)).asSolution().print();//.submit(2023, 11, 2);
+            calculateMinDistanceSum(calculateGalaxies(inputToArray(input), 2)).solution().print();//.submit(2023, 11, 2);
         });
     }
 
     private static void part2() {
         new InputParser(2023, 11).getInput().ifPresent(input -> {
-            calculateMinDistanceSum(calculateGalaxies(inputToArray(input), 1000000)).asSolution().print();//.submit(2023, 11, 2);
+            calculateMinDistanceSum(calculateGalaxies(inputToArray(input), 1000000)).solution().print();//.submit(2023, 11, 2);
         });
     }
 

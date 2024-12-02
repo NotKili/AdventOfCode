@@ -51,21 +51,6 @@ public class Day2 {
         
         return true;
     }
-
-    private static boolean dir(List<IntInput> in) {
-        var a = 0;
-        var b = 0;
-        
-        for (int i = 0; i < in.size() - 1; i++) {
-            if (in.get(i).asInt() < in.get(i + 1).asInt()) {
-                a++;
-            } else {
-                b++;
-            }
-        }
-        
-        return a > b;
-    }
     
     private static boolean safeRem(List<IntInput> in) {
         if (safe(in)) {

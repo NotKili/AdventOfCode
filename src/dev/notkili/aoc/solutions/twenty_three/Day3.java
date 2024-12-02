@@ -7,7 +7,6 @@ import dev.notkili.aoc.shared.misc.position.Int2DPos;
 import dev.notkili.aoc.shared.parse.InputParser;
 
 import java.util.HashMap;
-import java.util.Map;
 
 public class Day3 {
     public static void main(String[] args) {
@@ -132,7 +131,7 @@ public class Day3 {
                     }
                 }
             }
-            sum.asSolution().print();//.submit(2023, 3, 1);
+            sum.solution().print();//.submit(2023, 3, 1);
 
 
 
@@ -221,7 +220,7 @@ public class Day3 {
                 }
             }
 
-            sum.asSolution().print();//.submit(2023, 3, 2);
+            sum.solution().print();//.submit(2023, 3, 2);
         });
     }
 }
