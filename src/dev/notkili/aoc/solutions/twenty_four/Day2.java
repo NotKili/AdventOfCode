@@ -71,89 +71,17 @@ public class Day2 {
         if (safe(in)) {
             return true;
         }
-
-        var dir = dir(in);
         
-        for (int i = 0; i < in.size() - 1; i++) {
-            if (dir) {
-                if (in.get(i).asInt() >= in.get(i + 1).asInt()) {
-                    var cpyA = new ArrayList<>(in);
-                    var cpyB = new ArrayList<>(in);
-                    
-                    cpyA.remove(i);
-                    
-                    if (safe(cpyA)) {
-                        return true;
-                    }
-                    
-                    cpyB.remove(i + 1);
-                    
-                    if (safe(cpyB)) {
-                        return true;
-                    } else {
-                        return false;
-                    }
-                }
-
-                if (in.get(i + 1).asInt() - in.get(i).asInt() > 3) {
-                    var cpyA = new ArrayList<>(in);
-                    var cpyB = new ArrayList<>(in);
-
-                    cpyA.remove(i);
-
-                    if (safe(cpyA)) {
-                        return true;
-                    }
-
-                    cpyB.remove(i + 1);
-
-                    if (safe(cpyB)) {
-                        return true;
-                    } else {
-                        return false;
-                    }
-                }
-            } else {
-                if (in.get(i).asInt() <= in.get(i + 1).asInt()) {
-                    var cpyA = new ArrayList<>(in);
-                    var cpyB = new ArrayList<>(in);
-
-                    cpyA.remove(i);
-
-                    if (safe(cpyA)) {
-                        return true;
-                    }
-
-                    cpyB.remove(i + 1);
-
-                    if (safe(cpyB)) {
-                        return true;
-                    } else {
-                        return false;
-                    }
-                }
-
-                if (in.get(i).asInt() - in.get(i + 1).asInt() > 3) {
-                    var cpyA = new ArrayList<>(in);
-                    var cpyB = new ArrayList<>(in);
-
-                    cpyA.remove(i);
-
-                    if (safe(cpyA)) {
-                        return true;
-                    }
-
-                    cpyB.remove(i + 1);
-
-                    if (safe(cpyB)) {
-                        return true;
-                    } else {
-                        return false;
-                    }
-                }
+        for (int i = 0; i < in.size(); i++) {
+            var cpy = new ArrayList<>(in);
+            
+            cpy.remove(i);
+            
+            if (safe(cpy)) {
+                return true;
             }
         }
         
-        throw new RuntimeException("Unreachable");
+        return false;
     }
 }
