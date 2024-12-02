@@ -1,7 +1,9 @@
 package dev.notkili.aoc.shared.misc.collections;
 
 import dev.notkili.aoc.shared.misc.Count;
+import dev.notkili.aoc.shared.misc.collections.list.IList;
 import dev.notkili.aoc.shared.misc.collections.list.List;
+import dev.notkili.aoc.shared.misc.tuple.Tuple;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -20,7 +22,7 @@ public class Counter<T> {
         add(elements);
     }
 
-    public Counter(List<T> elements) {
+    public Counter(IList<T, ?> elements) {
         this();
         add(elements);
     }
@@ -30,7 +32,7 @@ public class Counter<T> {
         add(elements);
     }
 
-    public Count getCountFor(T element) {
+    public Count count(T element) {
         return counters.getOrDefault(element, new Count(0));
     }
 
@@ -48,7 +50,7 @@ public class Counter<T> {
         return this;
     }
 
-    public Counter<T> add(List<T> elements) {
+    public Counter<T> add(IList<T, ?> elements) {
         for (var element : elements) {
             add(element);
         }
@@ -63,17 +65,51 @@ public class Counter<T> {
 
         return this;
     }
+    
+    public Tuple<T, Integer> max() {
+        T t = null;
+        var max = 0;
+        
+        for (var entry : counters.entrySet()) {
+            if (max < entry.getValue().asInt()) {
+                t = entry.getKey();
+                max = entry.getValue().asInt();
+            }
+        }
+        
+        return new Tuple<>(t, max);
+    }
+    
+    public Tuple<T, Integer> min() {
+        T t = null;
+        var min = Integer.MAX_VALUE;
+        
+        for (var entry : counters.entrySet()) {
+            if (min > entry.getValue().asInt()) {
+                t = entry.getKey();
+                min = entry.getValue().asInt();
+            }
+        }
+        
+        return new Tuple<>(t, min);
+    }
+    
+    public List<Tuple<T, Count>> entries() {
+        return new List<>(counters.entrySet().stream().map(e -> new Tuple<>(e.getKey(), e.getValue())).toList());
+    }
 
-    public int getSize() {
+    public int size() {
         return counters.size();
     }
 
     public List<T> keys() {
         return new List<>(counters.keySet());
     }
-
-
-
+    
+    public Map<T, Count> map() {
+        return counters;
+    }
+    
     public Counter<T> merge(Counter<T> other) {
         Counter<T> counter = new Counter<>();
 
@@ -85,6 +121,12 @@ public class Counter<T> {
             counter.counters.merge(entry.getKey(), entry.getValue().copy(), Count::increment);
         }
 
+        return counter;
+    }
+    
+    public Counter<T> copy() {
+        Counter<T> counter = new Counter<>();
+        counter.counters.putAll(counters);
         return counter;
     }
 }
