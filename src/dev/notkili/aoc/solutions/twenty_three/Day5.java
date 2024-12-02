@@ -135,7 +135,7 @@ public class Day5 {
             ;
 
             List<Range> ranges = new List<>();
-            ranges.addAll(seedInput.asList());
+            ranges.add(seedInput.asList());
 
             for (var mapper : mappers) {
                 mapper.sort(Comparator.comparingLong(a -> a.getA().lower));
@@ -185,7 +185,7 @@ public class Day5 {
                 }
             }
 
-            newRanges.addAll(tmpList);
+            newRanges.add(tmpList);
         }
 
         return newRanges.distinct();

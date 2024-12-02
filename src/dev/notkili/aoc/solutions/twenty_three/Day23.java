@@ -168,7 +168,7 @@ public class Day23 {
                 if (current.getB() != null)
                     neighbours = List.of(pos.add(current.getB().getDelta()));
                 else
-                    neighbours = new List<Int2DPos>().addAll(pos.getNeighbours(Direction.CardArr).set());
+                    neighbours = new List<Int2DPos>().add(pos.getNeighbours(Direction.CardArr).set());
 
                 for (var neigh : neighbours) {
                     if (!map.containsKey(neigh)) {
