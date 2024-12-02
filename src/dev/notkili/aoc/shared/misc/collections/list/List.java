@@ -99,13 +99,13 @@ public class List<T> implements IList<T, List<T>> {
     }
 
     @Override
-    public List<T> addAll(Collection<T> elements) {
+    public List<T> add(Collection<T> elements) {
         backingList.addAll(elements);
         return this;
     }
 
     @Override
-    public List<T> addAll(List<T> other) {
+    public List<T> add(List<T> other) {
         backingList.addAll(other.backingList);
         return this;
     }
@@ -156,33 +156,33 @@ public class List<T> implements IList<T, List<T>> {
     }
 
     @Override
-    public List<T> remove(int index) {
+    public List<T> rem(int index) {
         this.backingList.remove(index);
         return this;
     }
 
     @Override
-    public List<T> remove(long index) {
+    public List<T> rem(long index) {
         if (index >= Integer.MAX_VALUE)
             throw new IndexOutOfBoundsException("Index too large for int");
 
-        return remove((int) index);
+        return rem((int) index);
     }
 
     @Override
-    public List<T> remove(T element) {
+    public List<T> rem(T element) {
         this.backingList.remove(element);
         return this;
     }
 
     @Override
-    public List<T> removeAll(Collection<T> elements) {
+    public List<T> rem(Collection<T> elements) {
         this.backingList.removeAll(elements);
         return this;
     }
 
     @Override
-    public List<T> removeIf(Predicate<T> predicate) {
+    public List<T> rem(Predicate<T> predicate) {
         this.backingList.removeIf(predicate);
         return this;
     }
@@ -230,38 +230,38 @@ public class List<T> implements IList<T, List<T>> {
     }
 
     @Override
-    public List<T> replace(int index, T element) {
+    public List<T> repl(int index, T element) {
         this.backingList.set(index, element);
         return this;
     }
 
     @Override
-    public List<T> replace(long index, T element) {
+    public List<T> repl(long index, T element) {
         if (index >= Integer.MAX_VALUE)
             throw new IndexOutOfBoundsException("Index too large for int");
 
-        return replace((int) index, element);
+        return repl((int) index, element);
     }
 
     @Override
-    public List<T> replace(int index, Function<T, T> modifier) {
+    public List<T> repl(int index, Function<T, T> modifier) {
         this.backingList.set(index, modifier.apply(this.backingList.get(index)));
         return this;
     }
 
     @Override
-    public List<T> replace(long index, Function<T, T> modifier) {
+    public List<T> repl(long index, Function<T, T> modifier) {
         if (index >= Integer.MAX_VALUE)
             throw new IndexOutOfBoundsException("Index too large for int");
 
-        return replace((int) index, modifier);
+        return repl((int) index, modifier);
     }
 
     @Override
-    public List<T> replaceFirst(T oldElement, T newElement) {
+    public List<T> replFirst(T oldElement, T newElement) {
         for (int i = 0; i < size(); i++) {
             if (get(i).equals(oldElement)) {
-                replace(i, newElement);
+                repl(i, newElement);
                 break;
             }
         }
@@ -270,10 +270,10 @@ public class List<T> implements IList<T, List<T>> {
     }
 
     @Override
-    public List<T> replaceAll(T oldElement, T newElement) {
+    public List<T> repl(T oldElement, T newElement) {
         for (int i = 0; i < size(); i++) {
             if (get(i).equals(oldElement)) {
-                replace(i, newElement);
+                repl(i, newElement);
             }
         }
 
@@ -347,7 +347,7 @@ public class List<T> implements IList<T, List<T>> {
         List<T> result = new List<>();
 
         for (long i = 0; i < times; i++) {
-            result.addAll(this);
+            result.add(this);
         }
 
         return result;

@@ -1,6 +1,7 @@
 package dev.notkili.aoc.shared.misc.collections.list;
 
 import dev.notkili.aoc.shared.input.LongInput;
+import dev.notkili.aoc.shared.misc.collections.Counter;
 import dev.notkili.aoc.shared.misc.collections.set.ISet;
 
 import java.util.*;
@@ -31,14 +32,34 @@ public interface IList<T, L extends IList<T, L>> extends Iterable<T> {
     T last();
 
     L add(T element);
+    
+    default L addC(T element) {
+        return copy().add(element);
+    }
 
     L add(int index, T element);
 
+    default L addC(int index, T element) {
+        return copy().add(index, element);
+    }
+    
     L add(long index, T element);
+    
+    default L addC(long index, T element) {
+        return copy().add(index, element);
+    }
 
-    L addAll(Collection<T> elements);
+    L add(Collection<T> elements);
+    
+    default L addC(Collection<T> elements) {
+        return copy().add(elements);
+    }
 
-    L addAll(L other);
+    L add(L other);
+    
+    default L addC(L other) {
+        return copy().add(other);
+    }
 
     boolean contains(T element);
 
@@ -54,15 +75,35 @@ public interface IList<T, L extends IList<T, L>> extends Iterable<T> {
 
     L findAll(Predicate<T> predicate);
 
-    L remove(int index);
+    L rem(int index);
+    
+    default L remC(int index) {
+        return copy().rem(index);
+    }
 
-    L remove(long index);
+    L rem(long index);
+    
+    default L remC(long index) {
+        return copy().rem(index);
+    }
 
-    L remove(T element);
+    L rem(T element);
+    
+    default L remC(T element) {
+        return copy().rem(element);
+    }
 
-    L removeAll(Collection<T> elements);
+    L rem(Collection<T> elements);
+    
+    default L remC(Collection<T> elements) {
+        return copy().rem(elements);
+    }
 
-    L removeIf(Predicate<T> predicate);
+    L rem(Predicate<T> predicate);
+    
+    default L remC(Predicate<T> predicate) {
+        return copy().rem(predicate);
+    }
 
     L sublist(int start, int end);
 
@@ -74,17 +115,41 @@ public interface IList<T, L extends IList<T, L>> extends Iterable<T> {
 
     IList<L, ?> group(int n);
 
-    L replace(int index, T element);
+    L repl(int index, T element);
+    
+    default L replC(int index, T element) {
+        return copy().repl(index, element);
+    }
 
-    L replace(long index, T element);
+    L repl(long index, T element);
+    
+    default L replC(long index, T element) {
+        return copy().repl(index, element);
+    }
 
-    L replace(int index, Function<T, T> modifier);
+    L repl(int index, Function<T, T> modifier);
+    
+    default L replC(int index, Function<T, T> modifier) {
+        return copy().repl(index, modifier);
+    }
 
-    L replace(long index, Function<T, T> modifier);
+    L repl(long index, Function<T, T> modifier);
+    
+    default L replC(long index, Function<T, T> modifier) {
+        return copy().repl(index, modifier);
+    }
 
-    L replaceFirst(T oldElement, T newElement);
+    L replFirst(T oldElement, T newElement);
+    
+    default L replFC(T oldElement, T newElement) {
+        return copy().replFirst(oldElement, newElement);
+    }
 
-    L replaceAll(T oldElement, T newElement);
+    L repl(T oldElement, T newElement);
+    
+    default L replC(T oldElement, T newElement) {
+        return copy().repl(oldElement, newElement);
+    }
 
     L clear();
 
@@ -107,6 +172,10 @@ public interface IList<T, L extends IList<T, L>> extends Iterable<T> {
     ArrayList<T> arrayList();
 
     ISet<T, ?> set();
+    
+    default Counter<T> count() {
+        return new Counter<>(this);
+    }
 
     L multiply(long times);
 
