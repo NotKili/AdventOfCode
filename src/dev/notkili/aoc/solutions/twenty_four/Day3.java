@@ -2,11 +2,7 @@ package dev.notkili.aoc.solutions.twenty_four;
 
 import dev.notkili.aoc.shared.Pattern;
 import dev.notkili.aoc.shared.input.LongInput;
-import dev.notkili.aoc.shared.input.StringInput;
 import dev.notkili.aoc.shared.parse.InputParser;
-
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.regex.Matcher;
 
 public class Day3 {
     public static void main(String[] args) {
