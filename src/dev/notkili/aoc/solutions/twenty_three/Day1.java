@@ -8,11 +8,11 @@ public class Day1 {
         System.out.println("Solution 1:");
         var result = new InputParser(2023, 1).getInput()
                 .map(input ->
-                        input.splitAt("\n")
+                        input.split("\n")
                         .mapToInt(str ->
-                                str.findFirstNthDigit(0)
+                                str.firstDigit(0)
                                 .multiply(10)
-                                .add(str.findLastNthDigit(0)))
+                                .add(str.lastDigit(0)))
                         .sum()
                         .asStringInput());
 
@@ -22,11 +22,11 @@ public class Day1 {
         System.out.println("\nSolution 2:");
         result = new InputParser(2023, 1).getInput()
                 .map(input ->
-                        input.splitAt("\n")
+                        input.split("\n")
                                 .mapToInt(str ->
-                                        str.findFirstNthDigit(0, true)
+                                        str.firstDigit(0, true)
                                         .multiply(10)
-                                        .add(str.findLastNthDigit(0, true)))
+                                        .add(str.lastDigit(0, true)))
                                 .sum()
                                 .asStringInput());
 

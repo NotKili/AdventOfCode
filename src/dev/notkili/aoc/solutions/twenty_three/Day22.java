@@ -22,12 +22,12 @@ public class Day22 {
 
     public static void part1() {
         new InputParser(2023, 22).getInput().ifPresent(input -> {
-            var bricks = new List<>(input.splitAt("\n")
-                    .mapTo(str -> str.splitAt("~"))
-                    .mapTo(str -> new Tuple<>(str.get(0).asTriple(","), str.get(1).asTriple(",")))
+            var bricks = new List<>(input.split("\n")
+                    .mapTo(str -> str.split("~"))
+                    .mapTo(str -> new Tuple<>(str.get(0).triple(","), str.get(1).triple(",")))
                     .mapTo(t -> new Tuple<>(
-                            new Triple<>(t.getA().getA().asInt(), t.getA().getC().asInt(), t.getA().getB().asInt()),
-                            new Triple<>(t.getB().getA().asInt(), t.getB().getC().asInt(), t.getB().getB().asInt()))
+                            new Triple<>(t.getA().getA().integer(), t.getA().getC().integer(), t.getA().getB().integer()),
+                            new Triple<>(t.getB().getA().integer(), t.getB().getC().integer(), t.getB().getB().integer()))
                     ).mapTo(t -> new Brick(t.getA(), t.getB())).asList());
 
 
@@ -98,12 +98,12 @@ public class Day22 {
         Brick.ID_F = 'A';
 
         new InputParser(2023, 22).getInput().ifPresent(input -> {
-            var bricks = new List<>(input.splitAt("\n")
-                    .mapTo(str -> str.splitAt("~"))
-                    .mapTo(str -> new Tuple<>(str.get(0).asTriple(","), str.get(1).asTriple(",")))
+            var bricks = new List<>(input.split("\n")
+                    .mapTo(str -> str.split("~"))
+                    .mapTo(str -> new Tuple<>(str.get(0).triple(","), str.get(1).triple(",")))
                     .mapTo(t -> new Tuple<>(
-                            new Triple<>(t.getA().getA().asInt(), t.getA().getC().asInt(), t.getA().getB().asInt()),
-                            new Triple<>(t.getB().getA().asInt(), t.getB().getC().asInt(), t.getB().getB().asInt()))
+                            new Triple<>(t.getA().getA().integer(), t.getA().getC().integer(), t.getA().getB().integer()),
+                            new Triple<>(t.getB().getA().integer(), t.getB().getC().integer(), t.getB().getB().integer()))
                     ).mapTo(t -> new Brick(t.getA(), t.getB())).asList());
 
 

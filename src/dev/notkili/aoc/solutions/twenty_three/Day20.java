@@ -25,31 +25,31 @@ public class Day20 {
             HashMap<String, java.util.List<String>> connections = new HashMap<>();
             HashMap<String, Module> moduleHashMap = new HashMap<>();
 
-            input.splitAt("\n").forEach(line -> {
-                var t = line.asTuple(" -> ");
+            input.split("\n").forEach(line -> {
+                var t = line.tuple(" -> ");
                 var id = t.getA();
-                var mCon = t.getB().splitAt(", ").mapTo(StringInput::asString).asList();
+                var mCon = t.getB().split(", ").mapTo(StringInput::str).asList();
 
-                if (id.asString().equals("broadcaster")) {
-                    var broadcast = new Broadcast(id.asString());
+                if (id.str().equals("broadcaster")) {
+                    var broadcast = new Broadcast(id.str());
                     broadcastRef.set(broadcast);
                     modules.add(broadcast);
-                    connections.put(id.asString(), mCon);
-                    moduleHashMap.put(id.asString(), broadcast);
+                    connections.put(id.str(), mCon);
+                    moduleHashMap.put(id.str(), broadcast);
                 } else {
                     var type = id.charAt(0);
                     id = id.substring(1);
 
                     if (type.asChar() == '%') {
-                        var module = new FlipFlop(id.asString());
+                        var module = new FlipFlop(id.str());
                         modules.add(module);
-                        connections.put(id.asString(), mCon);
-                        moduleHashMap.put(id.asString(), module);
+                        connections.put(id.str(), mCon);
+                        moduleHashMap.put(id.str(), module);
                     } else if (type.asChar() == '&') {
-                        var module = new Conjunction(id.asString());
+                        var module = new Conjunction(id.str());
                         modules.add(module);
-                        connections.put(id.asString(), mCon);
-                        moduleHashMap.put(id.asString(), module);
+                        connections.put(id.str(), mCon);
+                        moduleHashMap.put(id.str(), module);
                     } else {
                         throw new RuntimeException("Invalid type");
                     }
@@ -108,31 +108,31 @@ public class Day20 {
             HashMap<String, java.util.List<String>> connections = new HashMap<>();
             HashMap<String, Module> moduleHashMap = new HashMap<>();
 
-            input.splitAt("\n").forEach(line -> {
-                var t = line.asTuple(" -> ");
+            input.split("\n").forEach(line -> {
+                var t = line.tuple(" -> ");
                 var id = t.getA();
-                var mCon = t.getB().splitAt(", ").mapTo(StringInput::asString).asList();
+                var mCon = t.getB().split(", ").mapTo(StringInput::str).asList();
 
-                if (id.asString().equals("broadcaster")) {
-                    var broadcast = new Broadcast(id.asString());
+                if (id.str().equals("broadcaster")) {
+                    var broadcast = new Broadcast(id.str());
                     broadcastRef.set(broadcast);
                     modules.add(broadcast);
-                    connections.put(id.asString(), mCon);
-                    moduleHashMap.put(id.asString(), broadcast);
+                    connections.put(id.str(), mCon);
+                    moduleHashMap.put(id.str(), broadcast);
                 } else {
                     var type = id.charAt(0);
                     id = id.substring(1);
 
                     if (type.asChar() == '%') {
-                        var module = new FlipFlop(id.asString());
+                        var module = new FlipFlop(id.str());
                         modules.add(module);
-                        connections.put(id.asString(), mCon);
-                        moduleHashMap.put(id.asString(), module);
+                        connections.put(id.str(), mCon);
+                        moduleHashMap.put(id.str(), module);
                     } else if (type.asChar() == '&') {
-                        var module = new Conjunction(id.asString());
+                        var module = new Conjunction(id.str());
                         modules.add(module);
-                        connections.put(id.asString(), mCon);
-                        moduleHashMap.put(id.asString(), module);
+                        connections.put(id.str(), mCon);
+                        moduleHashMap.put(id.str(), module);
                     } else {
                         throw new RuntimeException("Invalid type");
                     }

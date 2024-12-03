@@ -22,9 +22,9 @@ public class Day24 {
 
     public static void part1() {
         new InputParser(2023, 24).getInput().ifPresent(input -> {
-            var list = new List<>(input.replace("  ", " ").splitAt("\n").mapTo(s -> s.asTuple(" @ ")).mapTo(t -> {
-                var pos = t.getA().splitAt(", ").mapTo(StringInput::asLong).asList();
-                var delta = t.getB().splitAt(", ").mapTo(StringInput::asLong).asList();
+            var list = new List<>(input.replace("  ", " ").split("\n").mapTo(s -> s.tuple(" @ ")).mapTo(t -> {
+                var pos = t.getA().split(", ").mapTo(StringInput::longInteger).asList();
+                var delta = t.getB().split(", ").mapTo(StringInput::longInteger).asList();
 
                 return new Line2D(new Tuple<>(pos.get(0).asDouble(), pos.get(1).asDouble()), delta.get(0).asInt(), delta.get(1).asInt());
             }).asList());
@@ -67,9 +67,9 @@ public class Day24 {
 
     public static void part2() {
         new InputParser(2023, 24).getInput().ifPresent(input -> {
-            var list = new List<>(input.replace("  ", " ").splitAt("\n").mapTo(s -> s.asTuple(" @ ")).mapTo(t -> {
-                var pos = t.getA().splitAt(", ").mapTo(StringInput::asLong).asList();
-                var delta = t.getB().splitAt(", ").mapTo(StringInput::asLong).asList();
+            var list = new List<>(input.replace("  ", " ").split("\n").mapTo(s -> s.tuple(" @ ")).mapTo(t -> {
+                var pos = t.getA().split(", ").mapTo(StringInput::longInteger).asList();
+                var delta = t.getB().split(", ").mapTo(StringInput::longInteger).asList();
 
                 return new Line3D(new Triple<>(pos.get(0).asDouble(), pos.get(1).asDouble(), pos.get(2).asDouble()), delta.get(0).asInt(), delta.get(1).asInt(), delta.get(2).asInt());
             }).asList());

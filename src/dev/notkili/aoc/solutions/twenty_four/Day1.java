@@ -12,10 +12,10 @@ public class Day1 {
     public static void main(String[] args) {
         System.out.println("Solution 1:");
         var result = new InputParser(2024, 1).getInput().map(strInput -> {
-            var lines = strInput.splitAt("\n");
-            var firstNums = lines.mapToString(str -> str.asTuple("   ").getA()).mapToInt(StringInput::asInt).mapTo(IntInput::asInt).asList();
+            var lines = strInput.split("\n");
+            var firstNums = lines.mapToString(str -> str.tuple("   ").getA()).mapToInt(StringInput::integer).mapTo(IntInput::asInt).asList();
             firstNums.sort(Comparator.naturalOrder());
-            var secondNums = lines.mapToString(str -> str.asTuple("   ").getB()).mapToInt(StringInput::asInt).mapTo(IntInput::asInt).asList();
+            var secondNums = lines.mapToString(str -> str.tuple("   ").getB()).mapToInt(StringInput::integer).mapTo(IntInput::asInt).asList();
             secondNums.sort(Comparator.naturalOrder());
             
             IntInput sum = new IntInput(0);
@@ -32,9 +32,9 @@ public class Day1 {
 
         System.out.println("\nSolution 2:");
         var result2 = new InputParser(2024, 1).getInput().map(strInput -> {
-            var lines = strInput.splitAt("\n");
-            var firstNums = lines.mapToString(str -> str.asTuple("   ").getA()).mapToInt(StringInput::asInt).mapTo(IntInput::asInt).asList();
-            var secondNums = lines.mapToString(str -> str.asTuple("   ").getB()).mapToInt(StringInput::asInt).mapTo(IntInput::asInt).asList();
+            var lines = strInput.split("\n");
+            var firstNums = lines.mapToString(str -> str.tuple("   ").getA()).mapToInt(StringInput::integer).mapTo(IntInput::asInt).asList();
+            var secondNums = lines.mapToString(str -> str.tuple("   ").getB()).mapToInt(StringInput::integer).mapTo(IntInput::asInt).asList();
             var counts = new Counter<>(secondNums);
             
             IntInput sum = new IntInput(0);

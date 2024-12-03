@@ -20,8 +20,8 @@ public class Day15 {
          new InputParser(2023, 15).getInput().ifPresent(input -> {
              input
                      .replace("\n", "")
-                     .splitAt(",")
-                     .mapToInt(str -> new IntInput(hashString(str.asString())))
+                     .split(",")
+                     .mapToInt(str -> new IntInput(hashString(str.str())))
                      .reduce(IntInput::add)
                      .get()
                      .solution().print();//submit(2023, 15, 1);
@@ -32,7 +32,7 @@ public class Day15 {
         new InputParser(2023, 15).getInput().ifPresent(input -> {
             var map = new HashMap<Integer, List<Tuple<String, String>>>();
 
-            input.replace("\n", "").splitAt(",").mapTo(StringInput::asString).forEach(str -> {
+            input.replace("\n", "").split(",").mapTo(StringInput::str).forEach(str -> {
                 if (str.contains("=")) {
                     var splits = str.split("=");
                     var label = splits[0];

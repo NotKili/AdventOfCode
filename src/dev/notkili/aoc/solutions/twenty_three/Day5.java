@@ -18,54 +18,54 @@ public class Day5 {
 
     private static void solve1() {
         new InputParser(2023, 5).getInput().ifPresent(input -> {
-            var diff = input.splitAt("\n\n");
+            var diff = input.split("\n\n");
 
             HashMap<LongInput, Set<LongInput>> seedToAnything = new HashMap<>();
 
             List<LongInput> seeds = new List<>();
-            diff.get(0).asTuple(": ").getB().splitAt(" ").forEach(s -> {
-                var seed = new LongInput(s.asString());
+            diff.get(0).tuple(": ").getB().split(" ").forEach(s -> {
+                var seed = new LongInput(s.str());
                 seeds.add(seed);
                 seedToAnything.put(seed, new Set<LongInput>().add(seed));
             });
 
-            var soils = new List<>(diff.get(1).replace("seed-to-soil map:\n", "").splitAt("\n").mapTo(str -> str.asTriple(" ")).mapTo(triple -> new Triple<>(new LongInput(triple.getA().asString()), new LongInput(triple.getB().asString()), new LongInput(triple.getC().asString()))).asList());
+            var soils = new List<>(diff.get(1).replace("seed-to-soil map:\n", "").split("\n").mapTo(str -> str.triple(" ")).mapTo(triple -> new Triple<>(new LongInput(triple.getA().str()), new LongInput(triple.getB().str()), new LongInput(triple.getC().str()))).asList());
 
             for (var seed : seeds) {
                 seedToAnything.put(seed, transmute(seed, seedToAnything, soils));
             }
 
-            var fertilizers = new List<>(diff.get(2).replace("soil-to-fertilizer map:\n", "").splitAt("\n").mapTo(str -> str.asTriple(" ")).mapTo(triple -> new Triple<>(new LongInput(triple.getA().asString()), new LongInput(triple.getB().asString()), new LongInput(triple.getC().asString()))).asList());
+            var fertilizers = new List<>(diff.get(2).replace("soil-to-fertilizer map:\n", "").split("\n").mapTo(str -> str.triple(" ")).mapTo(triple -> new Triple<>(new LongInput(triple.getA().str()), new LongInput(triple.getB().str()), new LongInput(triple.getC().str()))).asList());
 
             for (var seed : seeds) {
                 seedToAnything.put(seed, transmute(seed, seedToAnything, fertilizers));
             }
 
-            var waters = new List<>(diff.get(3).replace("fertilizer-to-water map:\n", "").splitAt("\n").mapTo(str -> str.asTriple(" ")).mapTo(triple -> new Triple<>(new LongInput(triple.getA().asString()), new LongInput(triple.getB().asString()), new LongInput(triple.getC().asString()))).asList());
+            var waters = new List<>(diff.get(3).replace("fertilizer-to-water map:\n", "").split("\n").mapTo(str -> str.triple(" ")).mapTo(triple -> new Triple<>(new LongInput(triple.getA().str()), new LongInput(triple.getB().str()), new LongInput(triple.getC().str()))).asList());
 
             for (var seed : seeds) {
                 seedToAnything.put(seed, transmute(seed, seedToAnything, waters));
             }
 
-            var lights = new List<>(diff.get(4).replace("water-to-light map:\n", "").splitAt("\n").mapTo(str -> str.asTriple(" ")).mapTo(triple -> new Triple<>(new LongInput(triple.getA().asString()), new LongInput(triple.getB().asString()), new LongInput(triple.getC().asString()))).asList());
+            var lights = new List<>(diff.get(4).replace("water-to-light map:\n", "").split("\n").mapTo(str -> str.triple(" ")).mapTo(triple -> new Triple<>(new LongInput(triple.getA().str()), new LongInput(triple.getB().str()), new LongInput(triple.getC().str()))).asList());
 
             for (var seed : seeds) {
                 seedToAnything.put(seed, transmute(seed, seedToAnything, lights));
             }
 
-            var temperature = new List<>(diff.get(5).replace("light-to-temperature map:\n", "").splitAt("\n").mapTo(str -> str.asTriple(" ")).mapTo(triple -> new Triple<>(new LongInput(triple.getA().asString()), new LongInput(triple.getB().asString()), new LongInput(triple.getC().asString()))).asList());
+            var temperature = new List<>(diff.get(5).replace("light-to-temperature map:\n", "").split("\n").mapTo(str -> str.triple(" ")).mapTo(triple -> new Triple<>(new LongInput(triple.getA().str()), new LongInput(triple.getB().str()), new LongInput(triple.getC().str()))).asList());
 
             for (var seed : seeds) {
                 seedToAnything.put(seed, transmute(seed, seedToAnything, temperature));
             }
 
-            var humidity = new List<>(diff.get(6).replace("temperature-to-humidity map:\n", "").splitAt("\n").mapTo(str -> str.asTriple(" ")).mapTo(triple -> new Triple<>(new LongInput(triple.getA().asString()), new LongInput(triple.getB().asString()), new LongInput(triple.getC().asString()))).asList());
+            var humidity = new List<>(diff.get(6).replace("temperature-to-humidity map:\n", "").split("\n").mapTo(str -> str.triple(" ")).mapTo(triple -> new Triple<>(new LongInput(triple.getA().str()), new LongInput(triple.getB().str()), new LongInput(triple.getC().str()))).asList());
 
             for (var seed : seeds) {
                 seedToAnything.put(seed, transmute(seed, seedToAnything, humidity));
             }
 
-            var location = new List<>(diff.get(7).replace("humidity-to-location map:\n", "").splitAt("\n").mapTo(str -> str.asTriple(" ")).mapTo(triple -> new Triple<>(new LongInput(triple.getA().asString()), new LongInput(triple.getB().asString()), new LongInput(triple.getC().asString()))).asList());
+            var location = new List<>(diff.get(7).replace("humidity-to-location map:\n", "").split("\n").mapTo(str -> str.triple(" ")).mapTo(triple -> new Triple<>(new LongInput(triple.getA().str()), new LongInput(triple.getB().str()), new LongInput(triple.getC().str()))).asList());
 
             for (var seed : seeds) {
                 seedToAnything.put(seed, transmute(seed, seedToAnything, location));
@@ -87,19 +87,19 @@ public class Day5 {
 
     private static void solve2() {
         new InputParser(2023, 5).getInput().ifPresent(input -> {
-            var diff = input.splitAt("\n\n");
+            var diff = input.split("\n\n");
 
-            var seedInput = diff.get(0).asTuple(": ").getB().splitAt(" ").groupN(2).mapTo(l -> {
-                var lower = l.get(0).asLong().asLong();
-                return new Range(lower, lower + l.get(1).asLong().asLong() - 1);
+            var seedInput = diff.get(0).tuple(": ").getB().split(" ").groupN(2).mapTo(l -> {
+                var lower = l.get(0).longInteger().asLong();
+                return new Range(lower, lower + l.get(1).longInteger().asLong() - 1);
             });
-            var soilInput = new List<>(diff.get(1).replace("seed-to-soil map:\n", "").splitAt("\n").mapTo(str -> str.asTriple(" ")).mapTo(triple -> new Triple<>(new LongInput(triple.getA().asString()), new LongInput(triple.getB().asString()), new LongInput(triple.getC().asString()))).asList());
-            var fertilizerInput = new List<>(diff.get(2).replace("soil-to-fertilizer map:\n", "").splitAt("\n").mapTo(str -> str.asTriple(" ")).mapTo(triple -> new Triple<>(new LongInput(triple.getA().asString()), new LongInput(triple.getB().asString()), new LongInput(triple.getC().asString()))).asList());
-            var waterInput = new List<>(diff.get(3).replace("fertilizer-to-water map:\n", "").splitAt("\n").mapTo(str -> str.asTriple(" ")).mapTo(triple -> new Triple<>(new LongInput(triple.getA().asString()), new LongInput(triple.getB().asString()), new LongInput(triple.getC().asString()))).asList());
-            var lightInput = new List<>(diff.get(4).replace("water-to-light map:\n", "").splitAt("\n").mapTo(str -> str.asTriple(" ")).mapTo(triple -> new Triple<>(new LongInput(triple.getA().asString()), new LongInput(triple.getB().asString()), new LongInput(triple.getC().asString()))).asList());
-            var temperatureInput = new List<>(diff.get(5).replace("light-to-temperature map:\n", "").splitAt("\n").mapTo(str -> str.asTriple(" ")).mapTo(triple -> new Triple<>(new LongInput(triple.getA().asString()), new LongInput(triple.getB().asString()), new LongInput(triple.getC().asString()))).asList());
-            var humidityInput = new List<>(diff.get(6).replace("temperature-to-humidity map:\n", "").splitAt("\n").mapTo(str -> str.asTriple(" ")).mapTo(triple -> new Triple<>(new LongInput(triple.getA().asString()), new LongInput(triple.getB().asString()), new LongInput(triple.getC().asString()))).asList());
-            var locationInput = new List<>(diff.get(7).replace("humidity-to-location map:\n", "").splitAt("\n").mapTo(str -> str.asTriple(" ")).mapTo(triple -> new Triple<>(new LongInput(triple.getA().asString()), new LongInput(triple.getB().asString()), new LongInput(triple.getC().asString()))).asList());
+            var soilInput = new List<>(diff.get(1).replace("seed-to-soil map:\n", "").split("\n").mapTo(str -> str.triple(" ")).mapTo(triple -> new Triple<>(new LongInput(triple.getA().str()), new LongInput(triple.getB().str()), new LongInput(triple.getC().str()))).asList());
+            var fertilizerInput = new List<>(diff.get(2).replace("soil-to-fertilizer map:\n", "").split("\n").mapTo(str -> str.triple(" ")).mapTo(triple -> new Triple<>(new LongInput(triple.getA().str()), new LongInput(triple.getB().str()), new LongInput(triple.getC().str()))).asList());
+            var waterInput = new List<>(diff.get(3).replace("fertilizer-to-water map:\n", "").split("\n").mapTo(str -> str.triple(" ")).mapTo(triple -> new Triple<>(new LongInput(triple.getA().str()), new LongInput(triple.getB().str()), new LongInput(triple.getC().str()))).asList());
+            var lightInput = new List<>(diff.get(4).replace("water-to-light map:\n", "").split("\n").mapTo(str -> str.triple(" ")).mapTo(triple -> new Triple<>(new LongInput(triple.getA().str()), new LongInput(triple.getB().str()), new LongInput(triple.getC().str()))).asList());
+            var temperatureInput = new List<>(diff.get(5).replace("light-to-temperature map:\n", "").split("\n").mapTo(str -> str.triple(" ")).mapTo(triple -> new Triple<>(new LongInput(triple.getA().str()), new LongInput(triple.getB().str()), new LongInput(triple.getC().str()))).asList());
+            var humidityInput = new List<>(diff.get(6).replace("temperature-to-humidity map:\n", "").split("\n").mapTo(str -> str.triple(" ")).mapTo(triple -> new Triple<>(new LongInput(triple.getA().str()), new LongInput(triple.getB().str()), new LongInput(triple.getC().str()))).asList());
+            var locationInput = new List<>(diff.get(7).replace("humidity-to-location map:\n", "").split("\n").mapTo(str -> str.triple(" ")).mapTo(triple -> new Triple<>(new LongInput(triple.getA().str()), new LongInput(triple.getB().str()), new LongInput(triple.getC().str()))).asList());
 
             List<Tuple<Range, Range>> soils = new List<>();
             soilInput.forEach(triple -> soils.add(new Tuple<>(new Range(triple.getB().asLong(), triple.getB().add(triple.getC()).subtract(1).asLong()), new Range(triple.getA().asLong(), triple.getA().add(triple.getC()).subtract(1).asLong()))));

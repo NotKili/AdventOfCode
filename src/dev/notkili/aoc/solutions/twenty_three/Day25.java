@@ -22,9 +22,9 @@ public class Day25 {
         new InputParser(2023, 25).getInput().ifPresent(input -> {
             var nodes = new HashMap<String, Node>();
 
-            input.splitAt("\n").mapTo(s ->  s.asTuple(": ")).forEach(t -> {
-                var node = nodes.computeIfAbsent(t.getA().asString(), Node::new);
-                var connections = t.getB().splitAt(" ").mapTo(StringInput::asString).asList();
+            input.split("\n").mapTo(s ->  s.tuple(": ")).forEach(t -> {
+                var node = nodes.computeIfAbsent(t.getA().str(), Node::new);
+                var connections = t.getB().split(" ").mapTo(StringInput::str).asList();
 
                 for (var connection: connections) {
                     var other = nodes.computeIfAbsent(connection, Node::new);

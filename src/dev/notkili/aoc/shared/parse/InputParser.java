@@ -51,7 +51,7 @@ public class InputParser {
             content.deleteCharAt(content.length() - 1);
 
             var input = new StringInput(content.toString());
-            writeToFile(input.asString());
+            writeToFile(input.str());
             return Optional.of(input);
         } catch (Exception e) {
             e.printStackTrace();

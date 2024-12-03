@@ -30,11 +30,11 @@ public class Day11 {
     }
 
     private static String[][] inputToArray(StringInput input) {
-        var split = input.splitAt("\n");
+        var split = input.split("\n");
         var array = new String[split.size()][split.get(0).length().asInt()];
 
         for (int i = 0; i < split.size(); i++) {
-            array[i] = split.get(i).asString().split("");
+            array[i] = split.get(i).str().split("");
         }
 
         return array;

@@ -14,7 +14,7 @@ public class Day9 {
 
     private static void part1() {
         new InputParser(2023, 9).getInput().ifPresent(input -> {
-            var sequences = input.splitAt("\n").splitAt(" ").mapTo(ListInput.StringListInput::toInts).asList();
+            var sequences = input.split("\n").splitAt(" ").mapTo(ListInput.StringListInput::toInts).asList();
 
             IntInput result = new IntInput(0);
 
@@ -29,7 +29,7 @@ public class Day9 {
 
     private static void part2() {
         new InputParser(2023, 9).getInput().ifPresent(input -> {
-            var sequences = input.splitAt("\n").splitAt(" ").mapTo(ListInput::reverse).mapTo(mp -> mp.mapToInt(StringInput::asInt)).asList();
+            var sequences = input.split("\n").splitAt(" ").mapTo(ListInput::reverse).mapTo(mp -> mp.mapToInt(StringInput::integer)).asList();
 
             IntInput result = new IntInput(0);
 

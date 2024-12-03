@@ -12,10 +12,10 @@ import java.util.NoSuchElementException;
 public class Day4 {
     public static void main(String[] args) {
         new InputParser(2023, 4).getInput().ifPresent(input -> {
-            input.splitAt("\n").mapToInt(card -> {
-                var result = card.asTuple(": ");
+            input.split("\n").mapToInt(card -> {
+                var result = card.tuple(": ");
 
-                var winningAndMine = result.getB().asTuple(" \\| ");
+                var winningAndMine = result.getB().tuple(" \\| ");
                 var winning = winningAndMine.getA();
                 var mine = winningAndMine.getB();
 
@@ -24,7 +24,7 @@ public class Day4 {
                 try {
                     int i = 0;
                     while (true) {
-                        winningNums.add(winning.findFirstNthNumber(i));
+                        winningNums.add(winning.firstNumber(i));
                         i++;
                     }
                 } catch (NoSuchElementException ignored) {
@@ -36,7 +36,7 @@ public class Day4 {
                 try {
                     int i = 0;
                     while (true) {
-                        myNums.add(mine.findFirstNthNumber(i));
+                        myNums.add(mine.firstNumber(i));
                         i++;
                     }
                 } catch (NoSuchElementException ignored) {
@@ -58,11 +58,11 @@ public class Day4 {
             HashMap<IntInput, IntInput> winningCards = new HashMap<>();
             HashMap<IntInput, Count> map = new HashMap<>();
 
-            input.splitAt("\n").forEach(card -> {
-                var result = card.asTuple(": ");
+            input.split("\n").forEach(card -> {
+                var result = card.tuple(": ");
 
-                var gameId = result.getA().findFirstNthNumber(0);
-                var winningAndMine = result.getB().asTuple(" \\| ");
+                var gameId = result.getA().firstNumber(0);
+                var winningAndMine = result.getB().tuple(" \\| ");
                 var winning = winningAndMine.getA();
                 var mine = winningAndMine.getB();
 
@@ -71,7 +71,7 @@ public class Day4 {
                 try {
                     int i = 0;
                     while (true) {
-                        winningNums.add(winning.findFirstNthNumber(i));
+                        winningNums.add(winning.firstNumber(i));
                         i++;
                     }
                 } catch (NoSuchElementException ignored) {
@@ -83,7 +83,7 @@ public class Day4 {
                 try {
                     int i = 0;
                     while (true) {
-                        myNums.add(mine.findFirstNthNumber(i));
+                        myNums.add(mine.firstNumber(i));
                         i++;
                     }
                 } catch (NoSuchElementException ignored) {

@@ -18,9 +18,9 @@ public class Day12 {
     private static void part1() {
         new InputParser(2023, 12).getInput().ifPresent(input -> {
             input
-                    .splitAt("\n")
-                    .mapTo(str -> str.asTuple(" ")
-                            .mapB(st -> st.splitAt(",")
+                    .split("\n")
+                    .mapTo(str -> str.tuple(" ")
+                            .mapB(st -> st.split(",")
                                     .toInts().mapTo(IntInput::asInt)
                                     .asList()
                             )
@@ -43,9 +43,9 @@ public class Day12 {
     private static void part2() {
         new InputParser(2023, 12).getInput().ifPresent(input -> {
             input
-                    .splitAt("\n")
-                    .mapTo(str -> str.asTuple(" ")
-                            .mapB(st -> st.splitAt(",")
+                    .split("\n")
+                    .mapTo(str -> str.tuple(" ")
+                            .mapB(st -> st.split(",")
                                     .toInts()
                                     .mapTo(IntInput::asInt)
                                     .asList()

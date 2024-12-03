@@ -22,18 +22,18 @@ public class Day7 {
 
             HashMap<Integer, List<Tuple<LongInput, String>>> hands = new HashMap<>();
 
-            input.splitAt("\n").forEach(in -> {
-                var split = in.splitAt(" ");
+            input.split("\n").forEach(in -> {
+                var split = in.split(" ");
                 var hand = split.get(0);
-                var bet = split.get(1).asLong();
+                var bet = split.get(1).longInteger();
 
-                var stren = getCardStrength(hand.splitAt("").mapTo(StringInput::asString).asList());
+                var stren = getCardStrength(hand.split("").mapTo(StringInput::str).asList());
 
                 if (!hands.containsKey(stren)) {
                     hands.put(stren, new List<>());
                 }
 
-                hands.get(stren).add(new Tuple<>(bet, hand.asString()));
+                hands.get(stren).add(new Tuple<>(bet, hand.str()));
             });
 
             Count count = new Count(1);
@@ -133,18 +133,18 @@ public class Day7 {
 
             HashMap<Integer, List<Tuple<LongInput, String>>> hands = new HashMap<>();
 
-            input.splitAt("\n").forEach(in -> {
-                var split = in.splitAt(" ");
+            input.split("\n").forEach(in -> {
+                var split = in.split(" ");
                 var hand = split.get(0);
-                var bet = split.get(1).asLong();
+                var bet = split.get(1).longInteger();
 
-                var stren = getCardStrengthJoker(hand.splitAt("").mapTo(StringInput::asString).asList());
+                var stren = getCardStrengthJoker(hand.split("").mapTo(StringInput::str).asList());
 
                 if (!hands.containsKey(stren)) {
                     hands.put(stren, new List<>());
                 }
 
-                hands.get(stren).add(new Tuple<>(bet, hand.asString()));
+                hands.get(stren).add(new Tuple<>(bet, hand.str()));
             });
 
             Count count = new Count(1);

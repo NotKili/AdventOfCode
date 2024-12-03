@@ -19,9 +19,9 @@ public class Day18 {
         new InputParser(2023, 18).getInput().ifPresent(input -> {
             var l = new List<>(
                     input
-                            .splitAt("\n")
-                            .mapTo(str -> str.asTriple(" "))
-                            .mapTo(tr -> new Tuple<>(mapDir(tr.getA().asString()), tr.getB().asInt().asLong()))
+                            .split("\n")
+                            .mapTo(str -> str.triple(" "))
+                            .mapTo(tr -> new Tuple<>(mapDir(tr.getA().str()), tr.getB().integer().asLong()))
                             .asList()
             );
 
@@ -32,9 +32,9 @@ public class Day18 {
     private static void part2() {
         new InputParser(2023, 18).getInput().ifPresent(input -> {
             var l = new List<>(
-                    input.splitAt("\n")
-                            .mapTo(str -> str.asTriple(" "))
-                            .mapTo(tr -> tr.getC().asString().replace("(", "").replace(")", ""))
+                    input.split("\n")
+                            .mapTo(str -> str.triple(" "))
+                            .mapTo(tr -> tr.getC().str().replace("(", "").replace(")", ""))
                             .mapTo(s -> new Tuple<>(
                                     mapDir(new IntInput(s.charAt(s.length() - 1) + "").asInt()),
                                     IntInput.hex(s.substring(1, s.length() - 1)).asLong()

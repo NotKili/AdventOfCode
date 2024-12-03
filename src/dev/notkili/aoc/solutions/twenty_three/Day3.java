@@ -11,7 +11,7 @@ import java.util.HashMap;
 public class Day3 {
     public static void main(String[] args) {
         new InputParser(2023, 3).getInput().ifPresent(input -> {
-            var lines = input.asString().split("\n");
+            var lines = input.str().split("\n");
 
             var yLen = lines.length;
             var map = new HashMap<Int2DPos, Character>();
@@ -138,7 +138,7 @@ public class Day3 {
         });
 
         new InputParser(2023, 3).getInput().ifPresent(input -> {
-            var lines = input.asString().split("\n");
+            var lines = input.str().split("\n");
 
             var yLen = lines.length;
             var map = new HashMap<Int2DPos, Character>();

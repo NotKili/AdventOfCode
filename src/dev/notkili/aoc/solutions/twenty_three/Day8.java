@@ -19,25 +19,25 @@ public class Day8 {
 
     private static void part1() {
         new InputParser(2023, 8).getInput().ifPresent(input -> {
-            var parsed = input.asTuple("\n\n");
+            var parsed = input.tuple("\n\n");
             var instr = parsed.getA();
             var mapping = parsed.getB();
 
             HashMap<StringInput, Tuple<StringInput, StringInput>> map = new HashMap<>();
 
-            for (var m : mapping.splitAt("\n")) {
-                var split = m.replace("(", "").replace(")", "").asTuple(" = ");
-                map.put(split.getA(), split.getB().asTuple(", "));
+            for (var m : mapping.split("\n")) {
+                var split = m.replace("(", "").replace(")", "").tuple(" = ");
+                map.put(split.getA(), split.getB().tuple(", "));
             }
 
-            var instrList = instr.splitAt("");
+            var instrList = instr.split("");
 
             LongInput count = new LongInput(0);
             StringInput current = new StringInput("AAA");
 
             while (true) {
                 for (var in : instrList) {
-                    if (in.asString().equals("R")) {
+                    if (in.str().equals("R")) {
                         current = map.get(current).getB();
                     } else {
                         current = map.get(current).getA();
@@ -45,7 +45,7 @@ public class Day8 {
 
                     count = count.add(1);
 
-                    if (current.asString().equals("ZZZ")) {
+                    if (current.str().equals("ZZZ")) {
                         count.solution().print(); // submit(2023, 8, 1);
                         return;
                     }
@@ -56,18 +56,18 @@ public class Day8 {
 
     private static void part2() {
         new InputParser(2023, 8).getInput().ifPresent(input -> {
-            var parsed = input.asTuple("\n\n");
+            var parsed = input.tuple("\n\n");
             var instr = parsed.getA();
             var mapping = parsed.getB();
 
             HashMap<StringInput, Tuple<StringInput, StringInput>> map = new HashMap<>();
 
-            for (var m : mapping.splitAt("\n")) {
-                var split = m.replace("(", "").replace(")", "").asTuple(" = ");
-                map.put(split.getA(), split.getB().asTuple(", "));
+            for (var m : mapping.split("\n")) {
+                var split = m.replace("(", "").replace(")", "").tuple(" = ");
+                map.put(split.getA(), split.getB().tuple(", "));
             }
 
-            var instrList = instr.splitAt("");
+            var instrList = instr.split("");
             var starts = map.keySet().stream().filter(s -> s.endsWith("A")).toList();
             var goals = map.keySet().stream().filter(s -> s.endsWith("Z")).toList();
 
@@ -85,13 +85,13 @@ public class Day8 {
                     while (true) {
                         for (var in : instrList) {
                             count++;
-                            if (in.asString().equals("R")) {
+                            if (in.str().equals("R")) {
                                 current = map.get(current).getB();
                             } else {
                                 current = map.get(current).getA();
                             }
 
-                            if (current.endsWith(goal.asString())) {
+                            if (current.endsWith(goal.str())) {
                                 dist.get(start).get(current).add(count);
 
                                 if (dist.get(start).get(current).size() >= 2) {

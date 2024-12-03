@@ -6,7 +6,6 @@ import dev.notkili.aoc.shared.misc.tuple.Tuple;
 
 import java.util.*;
 import java.util.function.BinaryOperator;
-import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -315,11 +314,11 @@ public class ListInput<I> implements Iterable<I> {
         }
 
         public ListInput<StringListInput> splitAt(String regex) {
-            return new ListInput<>(this.inputs.stream().map(s -> s.splitAt(regex)).collect(Collectors.toList()));
+            return new ListInput<>(this.inputs.stream().map(s -> s.split(regex)).collect(Collectors.toList()));
         }
 
         public IntListInput toInts() {
-            return new IntListInput(this.inputs.stream().map(StringInput::asInt).map(IntInput::new).collect(Collectors.toList()));
+            return new IntListInput(this.inputs.stream().map(StringInput::integer).map(IntInput::new).collect(Collectors.toList()));
         }
 
         public IntListInput mapToInt(Function<StringInput, IntInput> mapper) {

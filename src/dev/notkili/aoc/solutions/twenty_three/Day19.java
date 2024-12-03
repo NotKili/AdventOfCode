@@ -16,10 +16,10 @@ public class Day19 {
 
     private static void part1() {
         new InputParser(2023, 19).getInput().ifPresent(input -> {
-            var split = input.splitAt("\n\n");
+            var split = input.split("\n\n");
 
             var rules = new List<Rule>();
-            split.get(0).splitAt("\n").mapTo(str -> new Rule(str.asString())).forEach(rules::add);
+            split.get(0).split("\n").mapTo(str -> new Rule(str.str())).forEach(rules::add);
 
             HashMap<String, Rule> ruleMap = new HashMap<>();
 
@@ -29,11 +29,11 @@ public class Day19 {
 
             var parts = new List<>(
                     split.get(1)
-                    .splitAt("\n")
+                    .split("\n")
                     .mapTo(str -> str.substring(1, str.length().asInt() - 1))
                     .mapTo(str -> str.replaceAll("[xmas]=", ""))
-                    .mapTo(str -> str.asQuadruple(","))
-                    .mapTo(str -> new Part(str.getA().asLong().asLong(), str.getB().asLong().asLong(), str.getC().asLong().asLong(), str.getD().asLong().asLong()))
+                    .mapTo(str -> str.quadruple(","))
+                    .mapTo(str -> new Part(str.getA().longInteger().asLong(), str.getB().longInteger().asLong(), str.getC().longInteger().asLong(), str.getD().longInteger().asLong()))
                     .asList()
             );
 
@@ -59,10 +59,10 @@ public class Day19 {
 
     private static void part2() {
         new InputParser(2023, 19).getInput().ifPresent(input -> {
-            var split = input.splitAt("\n\n");
+            var split = input.split("\n\n");
 
             var rules = new List<Rule>();
-            split.get(0).splitAt("\n").mapTo(str -> new Rule(str.asString())).forEach(rules::add);
+            split.get(0).split("\n").mapTo(str -> new Rule(str.str())).forEach(rules::add);
 
             HashMap<String, Rule> ruleMap = new HashMap<>();
 

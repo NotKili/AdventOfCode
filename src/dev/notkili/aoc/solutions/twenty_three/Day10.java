@@ -35,13 +35,13 @@ public class Day10 {
         var map = new HashMap<Int2DPos, String>();
         Int2DPos start = null;
 
-        var split = input.splitAt("\n");
+        var split = input.split("\n");
 
         int y = 0;
         for (StringInput line : split) {
             int x = 0;
-            for (StringInput symbol : line.splitAt("")) {
-                var s = symbol.asString();
+            for (StringInput symbol : line.split("")) {
+                var s = symbol.str();
 
                 if (s.equals(".")) {
                     x++;
@@ -49,7 +49,7 @@ public class Day10 {
                 }
 
 
-                map.put(new Int2DPos(x, y), symbol.asString());
+                map.put(new Int2DPos(x, y), symbol.str());
 
                 if (s.equals("S")) {
                     start = new Int2DPos(x, y);
@@ -135,15 +135,15 @@ public class Day10 {
 
             var inLoop = loop.getC().set();
             var mapX2 = new HashMap<Int2DPos, String>();
-            var split = input.splitAt("\n");
+            var split = input.split("\n");
             int maxX = split.get(0).length().asInt() * 2;
             int maxY = split.size() * 2;
 
             int y = 0;
             for (StringInput line : split) {
                 int x = 0;
-                for (StringInput symbol : line.splitAt("")) {
-                    var s = symbol.asString();
+                for (StringInput symbol : line.split("")) {
+                    var s = symbol.str();
 
                     if (inLoop.contains(new Int2DPos(x / 2, y / 2))) {
                         switch (s) {

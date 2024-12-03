@@ -14,7 +14,7 @@ public class Day6 {
 
     private static void part1() {
         new InputParser(2023, 6).getInput().ifPresent(input -> {
-            var lines = input.splitAt("\n");
+            var lines = input.split("\n");
             var times = lines.get(0);
             var distances = lines.get(1);
 
@@ -22,7 +22,7 @@ public class Day6 {
             int i = 0;
             while (true) {
                 try {
-                    list.add(new Tuple<>(times.findFirstNthNumber(i).asLongInput(), distances.findFirstNthNumber(i).asLongInput()));
+                    list.add(new Tuple<>(times.firstNumber(i).asLongInput(), distances.firstNumber(i).asLongInput()));
                     i++;
                 } catch (Exception ignored) {
                     break;
@@ -57,7 +57,7 @@ public class Day6 {
 
     private static void part2() {
         new InputParser(2023, 6).getInput().ifPresent(input -> {
-            var lines = input.splitAt("\n");
+            var lines = input.split("\n");
             var times = lines.get(0);
             var distances = lines.get(1);
 
@@ -66,7 +66,7 @@ public class Day6 {
             int i = 0;
             while (true) {
                 try {
-                    ab = new Tuple<>(ab.getA() + times.findFirstNthNumber(i).asStringInput().asString(), ab.getB() + distances.findFirstNthNumber(i).asLongInput().asStringInput().asString());
+                    ab = new Tuple<>(ab.getA() + times.firstNumber(i).asStringInput().str(), ab.getB() + distances.firstNumber(i).asLongInput().asStringInput().str());
                     i++;
                 } catch (Exception ignored) {
                     break;

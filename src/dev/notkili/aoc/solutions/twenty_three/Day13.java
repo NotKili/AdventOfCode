@@ -18,7 +18,7 @@ public class Day13 {
 
     private static void part1() {
         new InputParser(2023, 13).getInput().ifPresent(input -> {
-            var reflections = input.splitAt("\n\n").mapTo(Day13::parseMap).mapTo(d -> findReflection(d, null));
+            var reflections = input.split("\n\n").mapTo(Day13::parseMap).mapTo(d -> findReflection(d, null));
 
             var sumRow = reflections.findAll(Triple::getC).mapTo(Triple::getA).reduce(Integer::sum).orElse(0) * 100L;
             var sumCol = reflections.findAll(t -> !t.getC()).mapTo(Triple::getA).reduce(Integer::sum).orElse(0);
@@ -29,7 +29,7 @@ public class Day13 {
 
     private static void part2() {
          new InputParser(2023, 13).getInput().ifPresent(input -> {
-             var reflections = input.splitAt("\n\n").mapTo(Day13::parseMap).mapTo(map -> new Tuple<>(findReflection(map, null), createMaps(map))).mapTo(maps -> {
+             var reflections = input.split("\n\n").mapTo(Day13::parseMap).mapTo(map -> new Tuple<>(findReflection(map, null), createMaps(map))).mapTo(maps -> {
                  var results = new List<Triple<Integer, Integer, Boolean>>();
 
                  for (var map : maps.getB()) {
@@ -143,7 +143,7 @@ public class Day13 {
     }
 
     private static char[][] parseMap(StringInput input) {
-        return input.splitAt("\n").mapTo(StringInput::chars).asList().toArray(char[][]::new);
+        return input.split("\n").mapTo(StringInput::chars).asList().toArray(char[][]::new);
     }
 
     private static List<char[][]> createMaps(char[][] original) {

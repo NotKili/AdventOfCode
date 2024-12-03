@@ -4,14 +4,14 @@ public class ArrayInput2D<T> {
     private final T[][] backingArray;
 
     public static ArrayInput2D<CharInput> parse(StringInput input) {
-        var split = input.splitAt("\n");
+        var split = input.split("\n");
         int y = split.size();
         int x = split.get(0).length().asInt();
 
         var backingArray = new CharInput[y][x];
 
         for (int i = 0; i < y; i++) {
-            var line = split.get(i).asString().toCharArray();
+            var line = split.get(i).str().toCharArray();
             for (int j = 0; j < x; j++) {
                 backingArray[i][j] = new CharInput(line[j]);
             }

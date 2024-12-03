@@ -12,13 +12,13 @@ public class Day2 {
         System.out.println("Solution 1:");
         
         new InputParser(2024, 2).getInput().ifPresent(strInput -> {
-            strInput.splitAt("\n").mapTo(str -> str.splitAt(" ")).mapTo(report -> report.mapTo(StringInput::asInt).asList()).mapTo(Day2::safe).mapTo(b -> b ? 1 : 0).reduce(Integer::sum).ifPresent(System.out::println);
+            strInput.split("\n").mapTo(str -> str.split(" ")).mapTo(report -> report.mapTo(StringInput::integer).asList()).mapTo(Day2::safe).mapTo(b -> b ? 1 : 0).reduce(Integer::sum).ifPresent(System.out::println);
         });
         
         System.out.println("\nSolution 2:");
         
         new InputParser(2024, 2).getInput().ifPresent(strInput -> {
-            strInput.splitAt("\n").mapTo(str -> str.splitAt(" ")).mapTo(report -> report.mapTo(StringInput::asInt).asList()).mapTo(report -> safeRem(report)).mapTo(b -> b ? 1 : 0).reduce(Integer::sum).ifPresent(System.out::println);
+            strInput.split("\n").mapTo(str -> str.split(" ")).mapTo(report -> report.mapTo(StringInput::integer).asList()).mapTo(report -> safeRem(report)).mapTo(b -> b ? 1 : 0).reduce(Integer::sum).ifPresent(System.out::println);
         });
     }
     

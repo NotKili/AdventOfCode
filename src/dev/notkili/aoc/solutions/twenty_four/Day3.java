@@ -11,13 +11,13 @@ public class Day3 {
         System.out.println("Solution 1:");
 
         new InputParser(2024, 3).getInput().ifPresent(strInput -> {
-            Matcher matcher = new Pattern("mul\\(\\d+,\\d+\\)").compile().matcher(strInput.asString());
+            Matcher matcher = new Pattern("mul\\(\\d+,\\d+\\)").compile().matcher(strInput.str());
             
             Long sum = 0L;
             
             while (matcher.find()) {
                 var inp = new StringInput(matcher.group());
-                sum += inp.findFirstNthNumber(0).asLong() * inp.findFirstNthNumber(1).asLong();
+                sum += inp.firstNumber(0).asLong() * inp.firstNumber(1).asLong();
             }
             
             System.out.println(sum);
@@ -26,7 +26,7 @@ public class Day3 {
         System.out.println("\nSolution 2:");
 
         new InputParser(2024, 3).getInput().ifPresent(strInput -> {
-            Matcher matcher = new Pattern("(don't\\(\\))|(do\\(\\))|(mul\\(\\d+,\\d+\\))").compile().matcher(strInput.asString());
+            Matcher matcher = new Pattern("(don't\\(\\))|(do\\(\\))|(mul\\(\\d+,\\d+\\))").compile().matcher(strInput.str());
             
             var sum = 0L;
             var enable = true;
@@ -42,7 +42,7 @@ public class Day3 {
                         continue;
                     }
                     
-                    sum += inp.findFirstNthNumber(0).asLong() * inp.findFirstNthNumber(1).asLong();
+                    sum += inp.firstNumber(0).asLong() * inp.firstNumber(1).asLong();
                 }
             }
             
