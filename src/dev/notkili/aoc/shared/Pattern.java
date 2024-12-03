@@ -1,14 +1,28 @@
 package dev.notkili.aoc.shared;
 
+import dev.notkili.aoc.shared.input.ListInput;
 import dev.notkili.aoc.shared.input.StringInput;
 
+import java.util.Objects;
 import java.util.Stack;
+import java.util.regex.Matcher;
 
 public class Pattern {
+    public static final Pattern ANY = new Pattern(".");
+    public static final Pattern ALPHA = new Pattern("[a-zA-Z]");
+    public static final Pattern ALPHA_LOW = new Pattern("[a-z]");
+    public static final Pattern ALPHA_UP = new Pattern("[A-Z]");
+    public static final Pattern DIGIT = new Pattern("\\d");
+    public static final Pattern WORD = new Pattern("\\w");
+    public static final Pattern NON_WORD = new Pattern("\\W");
+    public static final Pattern NON_DIGIT = new Pattern("\\D");
+    public static final Pattern NON_ALPHA = new Pattern("[^a-zA-Z]");
+    public static final Pattern WHITESPACE = new Pattern("\\s");
+    
     private final String pattern;
 
     public static Pattern of(StringInput pattern) {
-        return new Pattern(pattern.asString());
+        return new Pattern(pattern.str());
     }
 
     public static Pattern of(String pattern) {
@@ -25,6 +39,10 @@ public class Pattern {
 
     public Pattern or(Pattern pattern) {
         return new Pattern(this.pattern + '|' + pattern.pattern);
+    }
+    
+    public Pattern or(StringInput pattern) {
+        return new Pattern(this.pattern + '|' + group(pattern.str()));
     }
 
     public Pattern then(String pattern) {
@@ -203,5 +221,162 @@ public class Pattern {
             return pattern;
 
         return "(" + pattern + ")";
+    }
+    
+    public static Builder builder() {
+        return new Builder();
+    }
+    
+    public static Builder builder(String pattern) {
+        return new Builder(pattern);
+    }
+    
+    public static Builder builder(StringInput pattern) {
+        return new Builder(pattern);
+    }
+    
+    public static Builder builder(Pattern pattern) {
+        return new Builder(pattern);
+    }
+    
+    public static class Builder {
+        private Pattern pattern;
+        
+        public Builder() {
+            this.pattern = new Pattern("");
+        }
+        
+        public Builder(String pattern) {
+            this.pattern = new Pattern(pattern);
+        }
+        
+        public Builder(StringInput pattern) {
+            this.pattern = new Pattern(pattern.str());
+        }
+
+        public Builder(Pattern pattern) {
+            this.pattern = pattern;
+        }
+        
+        public Builder or(String pattern) {
+            Objects.requireNonNull(this.pattern);
+            this.pattern = this.pattern.or(pattern);
+            return this;
+        }
+        
+        public Builder or(StringInput pattern) {
+            Objects.requireNonNull(this.pattern);
+            this.pattern = this.pattern.or(pattern);
+            return this;
+        }
+        
+        public Builder or(Pattern pattern) {
+            Objects.requireNonNull(this.pattern);
+            this.pattern = this.pattern.or(pattern);
+            return this;
+        }
+        
+        public Builder then(String pattern) {
+            Objects.requireNonNull(this.pattern);
+            this.pattern = this.pattern.then(pattern);
+            return this;
+        }
+        
+        public Builder then(StringInput pattern) {
+            Objects.requireNonNull(this.pattern);
+            this.pattern = this.pattern.then(pattern.str());
+            return this;
+        }
+        
+        public Builder then(Pattern pattern) {
+            Objects.requireNonNull(this.pattern);
+            this.pattern = this.pattern.then(pattern);
+            return this;
+        }
+        
+        public Builder count(int count) {
+            Objects.requireNonNull(this.pattern);
+            this.pattern = this.pattern.count(count);
+            return this;
+        }
+        
+        public Builder min(int min) {
+            Objects.requireNonNull(this.pattern);
+            this.pattern = this.pattern.min(min);
+            return this;
+        }
+        
+        public Builder max(int max) {
+            Objects.requireNonNull(this.pattern);
+            this.pattern = this.pattern.max(max);
+            return this;
+        }
+        
+        public Builder between(int min, int max) {
+            Objects.requireNonNull(this.pattern);
+            this.pattern = this.pattern.between(min, max);
+            return this;
+        }
+        
+        public Builder reverse() {
+            Objects.requireNonNull(this.pattern);
+            this.pattern = this.pattern.reverse();
+            return this;
+        }
+        
+        public java.util.regex.Pattern compile() {
+            Objects.requireNonNull(this.pattern);
+            return pattern.compile();
+        }
+        
+        public Matcher matcher(String input) {
+            Objects.requireNonNull(this.pattern);
+            return pattern.compile().matcher(input);
+        }
+        
+        public Matcher matcher(StringInput input) {
+            Objects.requireNonNull(this.pattern);
+            return pattern.compile().matcher(input.str());
+        }
+        
+        public StringInput first(String input, int n, boolean wrap) {
+            Objects.requireNonNull(this.pattern);
+            return StringInput.of(input).first(this.pattern, n, wrap);
+        }
+        
+        public StringInput first(StringInput input, int n, boolean wrap) {
+            Objects.requireNonNull(this.pattern);
+            return input.first(this.pattern, n, wrap);
+        }
+        
+        public StringInput last(String input, int n, boolean wrap) {
+            Objects.requireNonNull(this.pattern);
+            return StringInput.of(input).last(this.pattern, n, wrap);
+        }
+        
+        public StringInput last(StringInput input, int n, boolean wrap) {
+            Objects.requireNonNull(this.pattern);
+            return input.last(this.pattern, n, wrap);
+        }
+        
+        public ListInput.StringListInput all(String input) {
+            Objects.requireNonNull(this.pattern);
+            return StringInput.of(input).all(this.pattern);
+        }
+        
+        public ListInput.StringListInput all(StringInput input) {
+            Objects.requireNonNull(this.pattern);
+            return input.all(this.pattern);
+        }
+        
+        public ListInput.StringListInput split(String input) {
+            Objects.requireNonNull(this.pattern);
+            return StringInput.of(input).split(this.pattern.pattern());
+        }
+
+        public Pattern build() {
+            Objects.requireNonNull(this.pattern);
+            return pattern;
+        }
     }
 }
