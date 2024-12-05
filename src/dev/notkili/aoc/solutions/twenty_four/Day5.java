@@ -3,6 +3,7 @@ package dev.notkili.aoc.solutions.twenty_four;
 import dev.notkili.aoc.shared.input.IntInput;
 import dev.notkili.aoc.shared.input.ListInput;
 import dev.notkili.aoc.shared.input.StringInput;
+import dev.notkili.aoc.shared.misc.collections.list.List;
 import dev.notkili.aoc.shared.misc.collections.set.Set;
 import dev.notkili.aoc.shared.misc.tuple.Tuple;
 import dev.notkili.aoc.shared.parse.InputParser;
@@ -49,6 +50,9 @@ public class Day5 {
     }
     
     public static boolean isValidUpdate(HashMap<IntInput, Set<IntInput>> order, ListInput.StringListInput l) {
+        // Heavily dependent on the sorting algorithm used, QS for example will not work the same way. Naive "bubble sort" like approach works as well with sifting down invalid orders
+        
+        /* Old Solution
         var notVisited = new Set<IntInput>();
         
         for (int x = 0; x < l.size(); x++) {
@@ -65,7 +69,19 @@ public class Day5 {
             }
         }
         
-        return true;
+        return true;*/
+        var lis = List.of(l.asList());
+        
+        return lis.sorted((a, b) -> {
+            var ai = a.integer();
+            var bi = b.integer();
+
+            if (!order.containsKey(bi) || !order.get(bi).contains(ai)) {
+                return 0;
+            }
+
+            return -1;
+        });
     }
 
     public static ListInput<StringInput> validateUpdate(HashMap<IntInput, Set<IntInput>> order, ListInput.StringListInput l) {
