@@ -281,6 +281,12 @@ public class List<T> implements IList<T, List<T>> {
     }
 
     @Override
+    public List<T> swap(int aInd, int bInd) {
+        var tmp = get(aInd);
+        return repl(aInd, get(bInd)).repl(bInd, tmp);
+    }
+
+    @Override
     public List<T> clear() {
         this.backingList.clear();
         return this;
