@@ -2,6 +2,7 @@ package dev.notkili.aoc.solutions.twenty_four;
 
 import dev.notkili.aoc.shared.input.IntInput;
 import dev.notkili.aoc.shared.input.ListInput;
+import dev.notkili.aoc.shared.input.StringInput;
 import dev.notkili.aoc.shared.misc.collections.set.Set;
 import dev.notkili.aoc.shared.misc.tuple.Tuple;
 import dev.notkili.aoc.shared.parse.InputParser;
@@ -67,22 +68,37 @@ public class Day5 {
         return true;
     }
 
-    public static ListInput.StringListInput validateUpdate(HashMap<IntInput, Set<IntInput>> order, ListInput.StringListInput l) {
-        var visited = new Set<IntInput>();
+    public static ListInput<StringInput> validateUpdate(HashMap<IntInput, Set<IntInput>> order, ListInput.StringListInput l) {
+        // Heavily dependent on the sorting algorithm used, QS for example will not work the same way. Naive "bubble sort" like approach works aswell with sifting down invalid orders
         
-        for (int x = 0; x < l.size(); x++) {
-            var asI = l.get(x).integer();
-
-            visited.add(asI);
-
-            if (order.getOrDefault(asI, new Set<>()).containsAny(visited)) {
-                var tmp = l.get(x - 1);
-                l.replace(x - 1, l.get(x));
-                l.replace(x, tmp);
-                validateUpdate(order, l);
+        /* Old Solution
+            var visited = new Set<IntInput>();
+            
+            for (int x = 0; x < l.size(); x++) {
+                var asI = l.get(x).integer();
+    
+                visited.add(asI);
+    
+                if (order.getOrDefault(asI, new Set<>()).containsAny(visited)) {
+                    var tmp = l.get(x - 1);
+                    l.replace(x - 1, l.get(x));
+                    l.replace(x, tmp);
+                    validateUpdate(order, l);
+                }
             }
-        }
+            
+            return l;
+         */
         
-        return l;
+        return l.sort((a, b) -> {
+            var ai = a.integer();
+            var bi = b.integer();
+
+            if (!order.containsKey(bi) || !order.get(bi).contains(ai)) {
+                return 0;
+            }
+
+            return -1;
+        });
     }
 }
