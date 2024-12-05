@@ -77,7 +77,7 @@ public class Day3 {
                     visited.add(pos);
 
                     if (Character.isDigit(c)) {
-                        for (Int2DPos neighbour : pos.getNeighbours(Direction.AllArr)) {
+                        for (Int2DPos neighbour : pos.getNeighbours(Direction.ALL)) {
 
                             if (!map.containsKey(neighbour))
                                 continue;
@@ -201,7 +201,7 @@ public class Day3 {
                     if (c.equals('*')) {
                         Set<Integer> adjacentNums = new Set<>();
 
-                        for (Int2DPos neighbour : pos.getNeighbours(Direction.AllArr)) {
+                        for (Int2DPos neighbour : pos.getNeighbours(Direction.ALL)) {
                             if (!map.containsKey(neighbour))
                                 continue;
 

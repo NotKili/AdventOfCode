@@ -70,7 +70,7 @@ public class Day10 {
         visited.add(start);
 
         outer:
-        for (var neighbour : start.getNeighbours(Direction.CardArr)) {
+        for (var neighbour : start.getNeighbours(Direction.CARD)) {
             if (map.containsKey(neighbour)) {
                 var pipe = Pipe.fromSymbol(map.get(neighbour));
 
@@ -256,7 +256,7 @@ public class Day10 {
         while (!queue.isEmpty()) {
             var current = queue.poll();
 
-            for (var neighbour : current.getNeighbours(Direction.CardArr)) {
+            for (var neighbour : current.getNeighbours(Direction.CARD)) {
                 if (visited.contains(neighbour))
                     continue;
 

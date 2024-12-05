@@ -39,6 +39,14 @@ public class Int2DPos implements Comparable<Int2DPos> {
         return y;
     }
 
+    public Int2DPos add(Direction dir) {
+        return new Int2DPos(x + dir.delta().getX(), y + dir.delta().getY());
+    }
+    
+    public Int2DPos add(Direction dir, int n) {
+        return new Int2DPos(x + dir.delta().getX() * n, y + dir.delta().getY() * n);
+    }
+    
     public Int2DPos add(Int2DPos pos) {
         return new Int2DPos(x + pos.x, y + pos.y);
     }
@@ -84,83 +92,83 @@ public class Int2DPos implements Comparable<Int2DPos> {
     }
 
     public Int2DPos north() {
-        return add(Direction.NORTH.getDelta());
+        return add(Direction.N.delta());
     }
 
     public Int2DPos north(int n) {
-        return add(Direction.NORTH.getDelta().mul(n));
+        return add(Direction.N.delta().mul(n));
     }
 
     public Int2DPos northEast() {
-        return add(Direction.NORTH_EAST.getDelta());
+        return add(Direction.NE.delta());
     }
 
     public Int2DPos northEast(int n) {
-        return add(Direction.NORTH_EAST.getDelta().mul(n));
+        return add(Direction.NE.delta().mul(n));
     }
 
     public Int2DPos northEast(int east, int north) {
-        return add(Direction.NORTH_EAST.getDelta().mul(east, north));
+        return add(Direction.NE.delta().mul(east, north));
     }
 
     public Int2DPos east() {
-        return add(Direction.EAST.getDelta());
+        return add(Direction.E.delta());
     }
 
     public Int2DPos east(int n) {
-        return add(Direction.EAST.getDelta().mul(n));
+        return add(Direction.E.delta().mul(n));
     }
 
     public Int2DPos southEast() {
-        return add(Direction.SOUTH_EAST.getDelta());
+        return add(Direction.SE.delta());
     }
 
     public Int2DPos southEast(int n) {
-        return add(Direction.SOUTH_EAST.getDelta().mul(n));
+        return add(Direction.SE.delta().mul(n));
     }
 
     public Int2DPos southEast(int east, int south) {
-        return add(Direction.SOUTH_EAST.getDelta().mul(east, south));
+        return add(Direction.SE.delta().mul(east, south));
     }
 
     public Int2DPos south() {
-        return add(Direction.SOUTH.getDelta());
+        return add(Direction.S.delta());
     }
 
     public Int2DPos south(int n) {
-        return add(Direction.SOUTH.getDelta().mul(n));
+        return add(Direction.S.delta().mul(n));
     }
 
     public Int2DPos southWest() {
-        return add(Direction.SOUTH_WEST.getDelta());
+        return add(Direction.SW.delta());
     }
 
     public Int2DPos southWest(int n) {
-        return add(Direction.SOUTH_WEST.getDelta().mul(n));
+        return add(Direction.SW.delta().mul(n));
     }
 
     public Int2DPos southWest(int west, int south) {
-        return add(Direction.SOUTH_WEST.getDelta().mul(west, south));
+        return add(Direction.SW.delta().mul(west, south));
     }
 
     public Int2DPos west() {
-        return add(Direction.WEST.getDelta());
+        return add(Direction.W.delta());
     }
 
     public Int2DPos west(int n) {
-        return add(Direction.WEST.getDelta().mul(n));
+        return add(Direction.W.delta().mul(n));
     }
 
     public Int2DPos northWest() {
-        return add(Direction.NORTH_WEST.getDelta());
+        return add(Direction.NW.delta());
     }
 
     public Int2DPos northWest(int n) {
-        return add(Direction.NORTH_WEST.getDelta().mul(n));
+        return add(Direction.NW.delta().mul(n));
     }
 
     public Int2DPos northWest(int west, int north) {
-        return add(Direction.NORTH_WEST.getDelta().mul(west, north));
+        return add(Direction.NW.delta().mul(west, north));
     }
 
     public Set<Int2DPos> getNeighbours(Direction... directions) {
@@ -168,7 +176,7 @@ public class Int2DPos implements Comparable<Int2DPos> {
 
 
         for (Direction direction : directions) {
-            set.add(add(direction.getDelta()));
+            set.add(add(direction.delta()));
         }
 
         return set;
@@ -179,7 +187,7 @@ public class Int2DPos implements Comparable<Int2DPos> {
 
 
         for (Direction direction : directions) {
-            set.add(add(direction.getDelta()));
+            set.add(add(direction.delta()));
         }
 
         return set;
@@ -190,7 +198,7 @@ public class Int2DPos implements Comparable<Int2DPos> {
 
 
         for (Direction direction : directions) {
-            set.add(add(direction.getDelta()));
+            set.add(add(direction.delta()));
         }
 
         return set;

@@ -62,7 +62,7 @@ public class Day18 {
                 var len = dir.getB();
 
                 edgeLen += len;
-                corners.add(last.add(new Long2DPos(len, len).mul(dir.getA().getDelta())));
+                corners.add(last.add(new Long2DPos(len, len).mul(dir.getA().delta())));
             }
 
             var area = 0.0;
@@ -79,13 +79,13 @@ public class Day18 {
     private static Direction mapDir(String s) {
         switch (s) {
             case "R":
-                return Direction.EAST;
+                return Direction.E;
             case "D":
-                return Direction.SOUTH;
+                return Direction.S;
             case "L":
-                return Direction.WEST;
+                return Direction.W;
             case "U":
-                return Direction.NORTH;
+                return Direction.N;
         }
 
         throw new IllegalArgumentException("Invalid direction: " + s);
@@ -94,13 +94,13 @@ public class Day18 {
     private static Direction mapDir(int s) {
         switch (s) {
             case 0:
-                return Direction.EAST;
+                return Direction.E;
             case 1:
-                return Direction.SOUTH;
+                return Direction.S;
             case 2:
-                return Direction.WEST;
+                return Direction.W;
             case 3:
-                return Direction.NORTH;
+                return Direction.N;
         }
 
         throw new IllegalArgumentException("Invalid direction: " + s);

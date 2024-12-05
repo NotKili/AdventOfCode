@@ -104,7 +104,7 @@ public class Day23 {
                 if (map.get(pos).equals('#'))
                     continue;
 
-                if (pos.getNeighbours(Direction.CardArr).removeAll(p -> !map.containsKey(p) || map.get(p).equals('#')).size() > 2) {
+                if (pos.getNeighbours(Direction.CARD).removeAll(p -> !map.containsKey(p) || map.get(p).equals('#')).size() > 2) {
                     nodes.put(pos, new Node(pos));
                 }
             }
@@ -114,8 +114,8 @@ public class Day23 {
             var queue = new LinkedList<Triple<Int2DPos, Direction, Integer>>();
             var visited = new Set<Int2DPos>();
 
-            for (var dir : Direction.CardArr) {
-                var neigh = node.position.add(dir.getDelta());
+            for (var dir : Direction.CARD) {
+                var neigh = node.position.add(dir.delta());
 
                 if (!map.containsKey(neigh)) {
                     continue;
@@ -129,16 +129,16 @@ public class Day23 {
                 if (!val.equals('.')) {
                     switch (val) {
                         case '>' -> {
-                            if (dir == Direction.EAST) queue.add(new Triple<>(neigh, Direction.EAST, 1));
+                            if (dir == Direction.E) queue.add(new Triple<>(neigh, Direction.E, 1));
                         }
                         case '<' -> {
-                            if (dir == Direction.WEST) queue.add(new Triple<>(neigh, Direction.WEST, 1));
+                            if (dir == Direction.W) queue.add(new Triple<>(neigh, Direction.W, 1));
                         }
                         case '^' -> {
-                            if (dir == Direction.NORTH) queue.add(new Triple<>(neigh, Direction.NORTH, 1));
+                            if (dir == Direction.N) queue.add(new Triple<>(neigh, Direction.N, 1));
                         }
                         case 'v' -> {
-                            if (dir == Direction.SOUTH) queue.add(new Triple<>(neigh, Direction.SOUTH, 1));
+                            if (dir == Direction.S) queue.add(new Triple<>(neigh, Direction.S, 1));
                         }
                     }
                     continue;
@@ -166,9 +166,9 @@ public class Day23 {
                 var neighbours = new List<Int2DPos>();
 
                 if (current.getB() != null)
-                    neighbours = List.of(pos.add(current.getB().getDelta()));
+                    neighbours = List.of(pos.add(current.getB().delta()));
                 else
-                    neighbours = new List<Int2DPos>().add(pos.getNeighbours(Direction.CardArr).set());
+                    neighbours = new List<Int2DPos>().add(pos.getNeighbours(Direction.CARD).set());
 
                 for (var neigh : neighbours) {
                     if (!map.containsKey(neigh)) {
@@ -180,16 +180,16 @@ public class Day23 {
                             queue.add(new Triple<>(neigh, null, current.getC() + 1));
                         }
                         case '>' -> {
-                            queue.add(new Triple<>(neigh, Direction.EAST, current.getC() + 1));
+                            queue.add(new Triple<>(neigh, Direction.E, current.getC() + 1));
                         }
                         case '<' -> {
-                            queue.add(new Triple<>(neigh, Direction.WEST, current.getC() + 1));
+                            queue.add(new Triple<>(neigh, Direction.W, current.getC() + 1));
                         }
                         case '^' -> {
-                            queue.add(new Triple<>(neigh, Direction.NORTH, current.getC() + 1));
+                            queue.add(new Triple<>(neigh, Direction.N, current.getC() + 1));
                         }
                         case 'v' -> {
-                            queue.add(new Triple<>(neigh, Direction.SOUTH, current.getC() + 1));
+                            queue.add(new Triple<>(neigh, Direction.S, current.getC() + 1));
                         }
                     }
                 }
@@ -219,7 +219,7 @@ public class Day23 {
                     continue;
 
 
-                if (pos.getNeighbours(Direction.CardArr).removeAll(p -> !map.containsKey(p) || map.get(p).equals('#')).size() > 2) {
+                if (pos.getNeighbours(Direction.CARD).removeAll(p -> !map.containsKey(p) || map.get(p).equals('#')).size() > 2) {
                     nodes.put(pos, new Node(pos));
                 }
             }
@@ -229,7 +229,7 @@ public class Day23 {
             var queue = new LinkedList<Tuple<Int2DPos, Integer>>();
             var visited = new Set<Int2DPos>();
 
-            for (var neigh : node.position.getNeighbours(Direction.CardArr)) {
+            for (var neigh : node.position.getNeighbours(Direction.CARD)) {
                 queue.add(new Tuple<>(neigh, 1));
             }
 
@@ -255,7 +255,7 @@ public class Day23 {
 
                 visited.add(current.getA());
 
-                for (var neigh : current.getA().getNeighbours(Direction.CardArr)) {
+                for (var neigh : current.getA().getNeighbours(Direction.CARD)) {
                     queue.add(new Tuple<>(neigh, current.getB() + 1));
                 }
             }

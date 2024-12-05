@@ -42,6 +42,14 @@ public class IntInput implements Input<IntInput> {
             default -> throw new IllegalArgumentException("Unknown literal: " + value);
         };
     }
+    
+    public static IntInput zero() {
+        return new IntInput(0);
+    }
+    
+    public static IntInput of(int value) {
+        return new IntInput(value);
+    }
 
     public IntInput(String value) {
         this.value = Integer.parseInt(value);

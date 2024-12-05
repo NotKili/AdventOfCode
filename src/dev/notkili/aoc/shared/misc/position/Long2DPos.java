@@ -1,6 +1,5 @@
 package dev.notkili.aoc.shared.misc.position;
 
-import dev.notkili.aoc.shared.input.IntInput;
 import dev.notkili.aoc.shared.input.LongInput;
 import dev.notkili.aoc.shared.misc.collections.list.List;
 import dev.notkili.aoc.shared.misc.collections.set.Set;
@@ -113,83 +112,83 @@ public class Long2DPos implements Comparable<Long2DPos> {
     }
 
     public Long2DPos north() {
-        return add(Direction.NORTH.getDelta());
+        return add(Direction.N.delta());
     }
 
     public Long2DPos north(int n) {
-        return add(Direction.NORTH.getDelta().mul(n));
+        return add(Direction.N.delta().mul(n));
     }
 
     public Long2DPos northEast() {
-        return add(Direction.NORTH_EAST.getDelta());
+        return add(Direction.NE.delta());
     }
 
     public Long2DPos northEast(int n) {
-        return add(Direction.NORTH_EAST.getDelta().mul(n));
+        return add(Direction.NE.delta().mul(n));
     }
 
     public Long2DPos northEast(int east, int north) {
-        return add(Direction.NORTH_EAST.getDelta().mul(east, north));
+        return add(Direction.NE.delta().mul(east, north));
     }
 
     public Long2DPos east() {
-        return add(Direction.EAST.getDelta());
+        return add(Direction.E.delta());
     }
 
     public Long2DPos east(int n) {
-        return add(Direction.EAST.getDelta().mul(n));
+        return add(Direction.E.delta().mul(n));
     }
 
     public Long2DPos southEast() {
-        return add(Direction.SOUTH_EAST.getDelta());
+        return add(Direction.SE.delta());
     }
 
     public Long2DPos southEast(int n) {
-        return add(Direction.SOUTH_EAST.getDelta().mul(n));
+        return add(Direction.SE.delta().mul(n));
     }
 
     public Long2DPos southEast(int east, int south) {
-        return add(Direction.SOUTH_EAST.getDelta().mul(east, south));
+        return add(Direction.SE.delta().mul(east, south));
     }
 
     public Long2DPos south() {
-        return add(Direction.SOUTH.getDelta());
+        return add(Direction.S.delta());
     }
 
     public Long2DPos south(int n) {
-        return add(Direction.SOUTH.getDelta().mul(n));
+        return add(Direction.S.delta().mul(n));
     }
 
     public Long2DPos southWest() {
-        return add(Direction.SOUTH_WEST.getDelta());
+        return add(Direction.SW.delta());
     }
 
     public Long2DPos southWest(int n) {
-        return add(Direction.SOUTH_WEST.getDelta().mul(n));
+        return add(Direction.SW.delta().mul(n));
     }
 
     public Long2DPos southWest(int west, int south) {
-        return add(Direction.SOUTH_WEST.getDelta().mul(west, south));
+        return add(Direction.SW.delta().mul(west, south));
     }
 
     public Long2DPos west() {
-        return add(Direction.WEST.getDelta());
+        return add(Direction.W.delta());
     }
 
     public Long2DPos west(int n) {
-        return add(Direction.WEST.getDelta().mul(n));
+        return add(Direction.W.delta().mul(n));
     }
 
     public Long2DPos northWest() {
-        return add(Direction.NORTH_WEST.getDelta());
+        return add(Direction.NW.delta());
     }
 
     public Long2DPos northWest(int n) {
-        return add(Direction.NORTH_WEST.getDelta().mul(n));
+        return add(Direction.NW.delta().mul(n));
     }
 
     public Long2DPos northWest(int west, int north) {
-        return add(Direction.NORTH_WEST.getDelta().mul(west, north));
+        return add(Direction.NW.delta().mul(west, north));
     }
 
     public Set<Long2DPos> getNeighbours(Direction... directions) {
@@ -197,7 +196,7 @@ public class Long2DPos implements Comparable<Long2DPos> {
 
 
         for (Direction direction : directions) {
-            set.add(add(direction.getDelta()));
+            set.add(add(direction.delta()));
         }
 
         return set;
@@ -208,7 +207,7 @@ public class Long2DPos implements Comparable<Long2DPos> {
 
 
         for (Direction direction : directions) {
-            set.add(add(direction.getDelta()));
+            set.add(add(direction.delta()));
         }
 
         return set;
@@ -219,7 +218,7 @@ public class Long2DPos implements Comparable<Long2DPos> {
 
 
         for (Direction direction : directions) {
-            set.add(add(direction.getDelta()));
+            set.add(add(direction.delta()));
         }
 
         return set;

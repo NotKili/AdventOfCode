@@ -77,8 +77,8 @@ public class Day17 {
 
             visited.add(tmp);
 
-            for (var dir : Direction.CardArr) {
-                var direction = dir.getDelta();
+            for (var dir : Direction.CARD) {
+                var direction = dir.delta();
                 var pathCosts = 0;
 
                 if (element.getB() != null && (direction.equals(element.getB()) || direction.equals(element.getB().rotate180()))) {

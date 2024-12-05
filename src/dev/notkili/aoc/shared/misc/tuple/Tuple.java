@@ -6,6 +6,10 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 
 public class Tuple<A, B> {
+    public static <A, B> Tuple<A, B> of(A a, B b) {
+        return new Tuple<>(a, b);
+    }
+    
     private final A a;
     private final B b;
 

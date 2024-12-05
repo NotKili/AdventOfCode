@@ -123,7 +123,7 @@ public class Day21 {
             if (current.getB() == dist)
                 continue;
 
-            for (var neigh : current.getA().getNeighbours(Direction.CardArr)) {
+            for (var neigh : current.getA().getNeighbours(Direction.CARD)) {
                 // Resize
                 if (!map.containsKey(neigh)) {
                     if (!resize)
@@ -138,8 +138,8 @@ public class Day21 {
                         for (int x = minX; x <= maxX; x++) {
                             var pos = new Int2DPos(x, y);
 
-                            for (var dir : Direction.AllArr) {
-                                var newPos = pos.add(dir.getDelta().mul(offset * xLen));
+                            for (var dir : Direction.ALL) {
+                                var newPos = pos.add(dir.delta().mul(offset * xLen));
 
                                 if (map.containsKey(newPos))
                                     continue;
