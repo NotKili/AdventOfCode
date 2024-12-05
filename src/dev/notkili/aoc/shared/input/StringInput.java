@@ -473,6 +473,10 @@ public class StringInput implements Input<StringInput> {
 
         return new Sextuple<>(new StringInput(split[0]), new StringInput(split[1]), new StringInput(split[2]), new StringInput(split[3]), new StringInput(split[4]), new StringInput(split[5]));
     }
+    
+    public MapInput2D<CharInput> charMap() {
+        return MapInput2D.parse(this);
+    }
 
     @Override
     public String toString() {
