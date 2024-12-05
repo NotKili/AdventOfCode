@@ -150,9 +150,23 @@ public interface IList<T, L extends IList<T, L>> extends Iterable<T> {
     default L replC(T oldElement, T newElement) {
         return copy().repl(oldElement, newElement);
     }
+    
+    L swap(int aInd, int bInd);
+    
+    default L swapC(int aInd, int bInd) {
+        return copy().swap(aInd, bInd);
+    }
 
     L clear();
 
+    default boolean sorted() {
+        return this.equals(copy().sort());
+    }
+    
+    default boolean sorted(Comparator<T> comparator) {
+        return this.equals(copy().sort(comparator));
+    }
+    
     L sort();
 
     L sort(Comparator<T> comparator);
