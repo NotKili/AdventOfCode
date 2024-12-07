@@ -5,9 +5,11 @@ import dev.notkili.aoc.shared.input.IntInput;
 import dev.notkili.aoc.shared.misc.collections.set.Set;
 import dev.notkili.aoc.shared.misc.position.Direction;
 import dev.notkili.aoc.shared.misc.position.Int2DPos;
+import dev.notkili.aoc.shared.misc.tuple.Quadruple;
 import dev.notkili.aoc.shared.misc.tuple.Tuple;
 import dev.notkili.aoc.shared.parse.InputParser;
 
+import java.util.LinkedList;
 import java.util.Objects;
 
 public class Day6 {
@@ -57,52 +59,65 @@ public class Day6 {
             }
 
             Objects.requireNonNull(guardPos);
-
-            var dist = new Set<Int2DPos>();
-            var orientation = Direction.N;
-            var mutableGuardPos = guardPos;
-
-            while (map.contains(mutableGuardPos)) {
-                dist.add(mutableGuardPos);
-
-                if (map.contains(mutableGuardPos.add(orientation)) && map.get(mutableGuardPos.add(orientation)).equals("#")) {
-                    orientation = orientation.nextClockwise(false);
-                } else {
-                    mutableGuardPos = mutableGuardPos.add(orientation);
-                }
-            }
             
+            // Current, Facing, Modified, Visited
+            var queue = new LinkedList<Quadruple<Int2DPos, Direction, Int2DPos, Set<Tuple<Int2DPos, Direction>>>>();
+
+            queue.add(new Quadruple<>(guardPos, Direction.N, null, new Set<>()));
+
             var obstacles = new Set<Int2DPos>();
             
-            for (var onPath : dist) {
-                if (onPath.equals(guardPos)) {
+            while (!queue.isEmpty()) {
+                var next = queue.poll();
+
+                var currentPosition = next.getA();
+                var currentFacing = next.getB();
+                var customObstaclePos = next.getC();
+                var visitedPositions = next.getD();
+
+                // Left map, no circle
+                if (!map.contains(currentPosition)) {
                     continue;
                 }
                 
-                map.put(onPath, new CharInput('#'));
+                // Irrelevant branch
+                if (obstacles.contains(customObstaclePos)) {
+                    continue;
+                }
 
-                mutableGuardPos = guardPos;
-                orientation = Direction.N;
-                var visited = new Set<Tuple<Int2DPos, Direction>>();
+                var positionAndFacing = new Tuple<>(currentPosition, currentFacing);
 
-                while (map.contains(mutableGuardPos) && !visited.contains(new Tuple<>(mutableGuardPos, orientation))) {
-                    visited.add(new Tuple<>(mutableGuardPos, orientation));
-                    
-                    if (map.contains(mutableGuardPos.add(orientation)) && map.get(mutableGuardPos.add(orientation)).equals("#")) {
-                        orientation = orientation.nextClockwise(false);
-                    } else {
-                        mutableGuardPos = mutableGuardPos.add(orientation);
+                // Reached previously visited pos -> cycle
+                if (visitedPositions.contains(positionAndFacing)) {
+                    obstacles.add(customObstaclePos);
+                    continue;
+                }
+
+                visitedPositions.add(positionAndFacing);
+
+                var nextPosition = currentPosition.add(currentFacing);
+
+                if (!map.contains(nextPosition))
+                    continue;
+
+                if (map.get(nextPosition).equals("#") || nextPosition.equals(customObstaclePos)) {
+                    queue.add(new Quadruple<>(currentPosition, currentFacing.nextClockwise(false), customObstaclePos, visitedPositions));
+
+                } else {
+                    queue.add(new Quadruple<>(nextPosition, currentFacing, customObstaclePos, visitedPositions));
+
+                    if (customObstaclePos == null) {
+                        if (visitedPositions.containsAny(Set.of(new Tuple<>(nextPosition, Direction.N), new Tuple<>(nextPosition, Direction.S), new Tuple<>(nextPosition, Direction.E), new Tuple<>(nextPosition, Direction.W)))) {
+                            continue;
+                        }
+                        
+                        queue.add(new Quadruple<>(currentPosition, currentFacing.nextClockwise(false), nextPosition, visitedPositions.copy()));
                     }
                 }
-                
-                if (map.contains(mutableGuardPos)) {
-                    obstacles.add(onPath);
-                }
-                
-                map.put(onPath, new CharInput('.'));
             }
 
             new IntInput(obstacles.size()).solution().print();
+            // new IntInput(loopCount).solution().submit(2024, 6, 2);
         });
     }
 }
