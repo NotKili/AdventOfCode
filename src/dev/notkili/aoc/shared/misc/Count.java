@@ -79,4 +79,9 @@ public class Count {
     public Count copy() {
         return new Count(count);
     }
+
+    @Override
+    public String toString() {
+        return "Count={" + count + "}";
+    }
 }
